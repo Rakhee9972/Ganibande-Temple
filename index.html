@@ -98,6 +98,118 @@ footer{background:var(--deep);color:#f9e7ca;padding:38px 22px 22px}
 .copyright{max-width:1080px;margin:24px auto 0;border-top:1px solid rgba(255,255,255,.15);padding-top:15px;font:11px Arial,sans-serif;color:#c9a98c}
 @media(max-width:820px){nav{gap:12px}nav a{font-size:12px}.hero-inner{grid-template-columns:1fr;gap:20px;padding-top:62px}.hero-copy{max-width:650px}.temple-art{min-height:300px}.art-card{min-height:265px}.gopuram{font-size:80px}.about-grid{gap:28px}.cards{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}.gallery-tile:first-child{min-height:220px}}
 @media(max-width:620px){.nav{padding:10px 16px}.brand-mark{width:40px;height:40px;flex-basis:40px}.brand-name{font-size:13px}.brand-sub{font-size:9px}.menu-toggle{display:block}nav{display:none;position:absolute;top:65px;left:0;right:0;background:var(--cream);padding:18px 22px 22px;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}nav.open{display:flex}nav a{padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}.nav-cta{margin-top:12px}.hero-inner{padding:55px 20px 48px;min-height:auto}.hero-copy{font-size:14px}.hero-actions .button{flex:1}.temple-art{min-height:280px}.art-card{width:75%;min-height:250px}.gopuram{font-size:75px}.strip-inner{grid-template-columns:1fr;gap:17px;padding:22px}.strip-item{justify-content:flex-start;max-width:260px;width:100%;margin:auto}section{padding:56px 19px}.about-grid,.location-grid{grid-template-columns:1fr}.about-art{min-height:250px}.cards{grid-template-columns:1fr}.info-card{min-height:0}.gallery{grid-template-columns:1fr 1fr}.gallery-tile,.gallery-tile:first-child{min-height:170px}.gallery-tile:first-child{grid-column:span 2}.footer-inner{flex-direction:column;align-items:flex-start}.footer-links{gap:14px}}
+
+.timing-list{font:12px/1.6 Arial,sans-serif;color:var(--muted)}
+.timing-list div{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid var(--line)}
+.timing-list div:last-child{border-bottom:0}
+.timing-list strong{color:var(--ink);white-space:nowrap}
+.timing-list span{text-align:right}
+.fine-print{font-size:11px!important;margin-top:10px!important}
+.history-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.story-card{background:#fffdf8;border:1px solid var(--line);padding:24px}
+.story-card h3{font-size:20px;font-weight:normal;color:var(--maroon);margin:0 0 10px}
+.story-card p{font:13px/1.8 Arial,sans-serif;color:var(--muted);margin:0}
+.booking-panel{background:#fffdf8;border:1px solid var(--line);padding:30px;display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+.booking-panel h3{font-size:26px;font-weight:normal;color:var(--maroon);margin:0 0 12px}
+.booking-panel p{font:14px/1.8 Arial,sans-serif;color:var(--muted)}
+.contact-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.button.whatsapp{background:#176b42;border-color:#176b42}
+.contact-number{display:block;font:15px Arial,sans-serif;font-weight:bold;color:var(--maroon);margin:8px 0}
+.media-board{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.media-board figure{margin:0;border:1px solid var(--line);background:#fffdf8;padding:10px}
+.media-board img,.media-board video{display:block;width:100%;max-height:280px;object-fit:cover;background:#f4e7ce}
+.media-board figcaption{font:12px Arial,sans-serif;color:var(--muted);padding:8px 2px}
+.admin-box{background:#fffdf8;border:1px dashed #c9ad75;padding:22px;margin-top:26px}
+.admin-box summary{cursor:pointer;color:var(--maroon);font-weight:bold}
+.admin-box p{font:13px/1.8 Arial,sans-serif;color:var(--muted)}
+.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.admin-form input,.admin-form button{font:14px Arial,sans-serif;padding:12px;border:1px solid var(--line);border-radius:4px}
+.admin-form button{background:var(--maroon);color:white;cursor:pointer}
+.admin-status{font:12px Arial,sans-serif;color:var(--maroon);margin-top:10px}
+@media(max-width:820px){.history-grid{grid-template-columns:1fr 1fr}.booking-panel{grid-template-columns:1fr}.media-board{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.history-grid,.media-board{grid-template-columns:1fr}.timing-list{font-size:11px}.booking-panel{padding:22px}.admin-form{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="nav">
+    <a class="brand" href="#home" aria-label="Sri Venkateshwara Swamy Temple home">
+      <span class="brand-mark" aria-hidden="true">ॐ</span>
+      <span><span class="brand-name">Sri Venkateshwara Swamy Temple</span><span class="brand-sub">Ganibande · Karnataka</span></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav id="navLinks" aria-label="Main navigation">
+      <a href="#about">About</a><a href="#darshan">Darshan</a><a href="#history">History</a><a href="#gallery">Gallery</a><a href="#hall">Function Hall</a><a href="#location">Location</a>
+      <a class="nav-cta" href="#location">Plan Your Visit</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">A place of devotion & peace</div>
+      <h1>Sri Venkateshwara<br><em>Swamy Temple</em></h1>
+      <p class="hero-copy">Welcome to the sacred home of Lord Sri Venkateshwara (Venkatramana) Swamy at Ganibande. Find darshan timings, temple history, contact details, function-hall booking information and updates for devotees.</p>
+      <div class="hero-actions"><a class="button gold" href="#location">Find the Temple&nbsp; ↗</a><a class="button outline" href="#contact">Contact Temple</a></div>
+      <div class="hero-note">Ganibande, Srinivaspur Taluk, Kolar District, Karnataka</div>
+    </div>
+    <div class="temple-art" aria-label="Decorative traditional temple illustration">
+      <div class="art-card"><div class="om">ॐ</div><div class="gopuram" aria-hidden="true">♜</div><strong>Om Namo Venkatesaya</strong><small>DIVINE BLESSINGS FOR ALL</small><div class="mantra">॥ श्री वेंकटेश्वराय नमः ॥</div></div>
+    </div>
+  </div>
+</section>
+<div class="trust-strip"><div class="strip-inner">
+  <div class="strip-item"><div class="strip-icon">✧</div><div><strong>A Sacred Place</strong><span>Prayer, faith and devotion</span></div></div>
+  <div class="strip-item"><div class="strip-icon">◷</div><div><strong>Darshan Timings</strong><span>Sunday–Friday 7:00–11:30 · Saturday 6:00–5:00</span></div></div>
+  <div class="strip-item"><div class="strip-icon">⌖</div><div><strong>Visit Ganibande</strong><span>Kolar District, Karnataka</span></div></div>
+</div></div>
+  <div class="strip-item"><div class="strip-icon">◷</div><div><strong>Darshan Information</strong><span>Confirm timings before visiting</span></div></div>
+  <div class="strip-item"><div class="strip-icon">⌖</div><div><strong>Visit Ganibande</strong><span>Kolar District, Karnataka</span></div></div>
+</div></div>
+<section id="about">
+  <div class="section-inner about-grid">
+    <div class="about-art"><div class="about-symbol"><span class="big">ॐ</span><span>Sri Venkateshwara Swamy</span></div></div>
+    <div class="about-copy"><div class="kicker">Welcome, devotees</div><h2>A place to pause, pray and find peace</h2>
+      <p>Sri Venkateshwara Swamy Temple, also known locally as Sri Venkataramana Swamy Temple, is in Ganibande near Rayalpad, Srinivaspur Taluk, Kolar District, Karnataka.</p>
+      <p>This website shares visitor information, darshan timings, local traditions, contact details and function-hall booking enquiries for devotees.</p>
+      <div class="note"><strong>Devotee notice:</strong> Timings and historical stories shown here are based on the information currently available and should be confirmed with temple representatives before travel or booking.</div>
+    </div>
+  </div>
+</section>
+<section id="darshan" style="background:#fffdf8">
+  <div class="section-inner"><div class="section-heading"><div class="kicker">Plan your visit</div><h2>Darshan & Temple Information</h2><p>Check the latest details with the temple management before travelling, especially on festival days.</p></div>
+    <div class="cards">
+      <article class="info-card"><div class="info-icon">◷</div><h3>Darshan Timings</h3>
+        <div class="timing-list">
+          <div><strong>Sunday</strong><span>7:00 AM – 11:30 AM</span></div>
+          <div><strong>Monday</strong><span>7:00 AM – 11:30 AM</span></div>
+          <div><strong>Tuesday</strong><span>7:00 AM – 11:30 AM</span></div>
+          <div><strong>Wednesday</strong><span>7:00 AM – 11:30 AM</span></div>
+          <div><strong>Thursday</strong><span>7:00 AM – 11:30 AM</span></div>
+          <div><strong>Friday</strong><span>7:00 AM – 11:30 AM</span></div>
+          <div><strong>Saturday</strong><span>6:00 AM – 5:00 PM</span></div>
+        </div><p class="fine-print">Hours shown from the supplied Google Maps screenshot. Please confirm locally, especially on festival days.</p>
+      </article>
+      <article class="info-card"><div class="info-icon">ॐ</div><h3>Pooja & Nithya Kalyanam</h3><p>Local information describes Nithya Kalyanams as being performed here. Contact the temple representatives to confirm the current schedule, availability, requirements and any charges before planning a ceremony.</p><a href="#contact">Ask about pooja ↗</a></article>
+      <article class="info-card"><div class="info-icon">✧</div><h3>Visitor Guidance</h3><p>Respect temple customs, follow instructions at the premises and check any special arrangements during festivals. Timings may change for special occasions.</p></article>
+    </div>
+  </div>
+</section>
+<section id="history" style="background:#fffdf8">
+  <div class="section-inner"><div class="section-heading"><div class="kicker">Tradition & local stories</div><h2>Temple History & Special Features</h2><p>The following details are shared in local accounts and community posts; please verify them with temple elders or management before treating them as official historical records.</p></div>
+    <div class="history-grid">
+      <article class="story-card"><h3>Ancient Temple Tradition</h3><p>Local accounts describe the Sri Venkataramana Swamy Temple as an ancient place of worship, believed by some to date back around 800 years and associated with the Vijayanagara period (14th–15th century). This date has not been independently verified here.</p></article>
+      <article class="story-card"><h3>The Peepal / Ravi Tree</h3><p>Local stories describe a sacred Peepal (Ravi) tree growing through the roof of the temple mandapam. Visitors should follow temple guidance around this sacred feature.</p></article>
+      <article class="story-card"><h3>Local Legend of Ganibande</h3><p>A local explanation links the name “Gavi Banda” with Kannada words for cave and rock, and tells of a nearby cave associated with Gautama Muni’s penance. This is presented as local legend, not a verified historical fact.</p></article>
+    </div>
+  </div>
+</section>
+<section id="festivals">
+  <div class="section-inner"><div class="section-heading"><div class="kicker">Celebrate together</div><h2>Festivals & Special Days</h2><p>Use this section to share verified festival dates, special poojas and community announcements.</p></div>
+    <div class="cards">
+      <article class="info-card">0px;width:100%;margin:auto}section{padding:56px 19px}.about-grid,.location-grid{grid-template-columns:1fr}.about-art{min-height:250px}.cards{grid-template-columns:1fr}.info-card{min-height:0}.gallery{grid-template-columns:1fr 1fr}.gallery-tile,.gallery-tile:first-child{min-height:170px}.gallery-tile:first-child{grid-column:span 2}.footer-inner{flex-direction:column;align-items:flex-start}.footer-links{gap:14px}}
 </style>
 </head>
 <body>
