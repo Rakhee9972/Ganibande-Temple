@@ -516,7 +516,7 @@ try {
       }
     });
 
-    const reviewsQuery = query(collection(db, "reviews"), where("approved", "==", true), orderBy("createdAt", "desc"), limit(30));
+    const reviewsQuery = query(collection(db, "reviews"), where("approved", "==", true), limit(30));
     onSnapshot(reviewsQuery, (snapshot) => {
       reviewsList.replaceChildren();
       const approvedReviews = snapshot.docs.map(docSnap => docSnap.data());
