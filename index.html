@@ -25,7 +25,14 @@ nav a:hover{color:var(--maroon)}
 .nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;background:var(--maroon);color:white;padding:11px 17px;border-radius:4px;font:600 13px Arial,sans-serif;border:1px solid var(--maroon);transition:.2s}
 .nav-cta:hover,.button:hover{background:var(--deep)}
 .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:5px;padding:8px 10px;color:var(--maroon);font-size:20px}
-.hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 75% 20%,#a84c32 0%,transparent 34%),linear-gradient(120deg,#421016 0%,#741d25 55%,#9b452c 100%);color:#fff8e9}
+..hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(45,8,12,.58),rgba(45,8,12,.72)),
+    url("temple-background.png") center 40%/cover no-repeat;
+  color:#fff8e9;
+}
 .hero:before,.hero:after{content:"✦  ❋  ✦  ❋  ✦";position:absolute;color:rgba(238,194,105,.18);font-size:40px;letter-spacing:25px;white-space:nowrap;pointer-events:none}
 .hero:before{top:28px;left:-10px}.hero:after{bottom:30px;right:-30px}
 .hero-inner{max-width:1180px;margin:auto;min-height:540px;padding:82px 22px 76px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:44px;position:relative}
