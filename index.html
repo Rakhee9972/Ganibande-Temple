@@ -268,5 +268,44 @@ menuToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('o
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰';}));
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
-</body>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyARWe0ryEhtqqlAaC6ogRVCo94Fp4tJvSQ",
+  authDomain: "ganibande-temple.firebaseapp.com",
+  projectId: "ganibande-temple",
+  storageBucket: "ganibande-temple.firebasestorage.app",
+  messagingSenderId: "721748696796",
+  appId: "1:721748696796:web:146c4d0e032d579ad91e19",
+  measurementId: "G-E71D4M8GG8"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const liveBox = document.getElementById("liveEmbed");
+
+onSnapshot(doc(db, "config", "youtube"), (snapshot) => {
+  if (!liveBox) return;
+
+  const url = snapshot.exists() ? snapshot.data().url : "";
+  const match = url && url.match(
+    /(?:youtube\.com\/(?:live\/|watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/
+  );
+
+  if (match) {
+    liveBox.innerHTML =
+      '<iframe width="100%" style="aspect-ratio:16/9;border:0;border-radius:8px" src="https://www.youtube.com/embed/' +
+      match[1] +
+      '" title="Temple Live Darshan" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>';
+    liveBox.hidden = false;
+  } else {
+    liveBox.replaceChildren();
+    liveBox.hidden = true;
+  }
+}, (error) => {
+  console.error("Live Darshan could not load:", error);
+});
+</script></body>
 </html>
