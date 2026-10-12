@@ -109,6 +109,7 @@
     try{const safeName=f.name.replace(/[^a-zA-Z0-9._-]/g,'_');const path=`media/${currentUser.uid}/${Date.now()}_${safeName}`;const sr=ref(storage,path);await uploadBytes(sr,f);const url=await getDownloadURL(sr);await addDoc(collection(db,'media'),{url,path,name:f.name,type:f.type.startsWith('video/')?'video':'image',uploadedBy:currentUser.uid,createdAt:new Date().toISOString()});$('uploadMsg').textContent='Upload complete.';await loadGallery();}
     catch(e){$('uploadMsg').textContent='Upload failed: '+e.message+'. Firebase Storage may require setup/billing; do not upgrade unless you choose to.';}
   });
+  if(role === 'owner') await loadEvents();
   async function loadGallery(){
     const g=$('gallery');g.replaceChildren();
     try{const snap=await getDocs(collection(db,'media'));if(snap.empty){g.textContent='No media uploaded yet.';return;}
