@@ -28,6 +28,28 @@
   <section id="portalPanel" class="hidden">
     <div class="panel"><div id="welcome" class="status">Signed in.</div><button id="logoutBtn" class="secondary">Sign Out</button></div>
     <section id="ownerPanel" class="panel hidden"><h2>Owner: YouTube Live Link</h2><label for="youtubeUrl">YouTube video/live URL</label><input id="youtubeUrl" type="url" placeholder="https://www.youtube.com/watch?v=..."><button id="saveYoutubeBtn">Save Live URL</button><p class="hint">Only an account with the Firestore role <b>owner</b> can change this link.</p></section>
+<hr>
+<h2>Temple Events Calendar</h2>
+<p class="hint">Add upcoming poojas and special temple events.</p>
+
+<label for="eventDate">Event Date</label>
+<input id="eventDate" type="date">
+
+<label for="eventName">Pooja / Event Name</label>
+<input id="eventName" type="text" placeholder="e.g. Special Abhishekam">
+
+<label for="eventTime">Event Time</label>
+<input id="eventTime" type="text" placeholder="e.g. 8:00 AM">
+
+<label for="eventDescription">Description</label>
+<input id="eventDescription" type="text" placeholder="Event details">
+
+<button id="saveEventBtn">Add Temple Event</button>
+<p id="eventMsg" class="status" role="status">Enter event details.</p>
+
+<h2>Manage Events</h2>
+<div id="ownerEventsList"></div>
+    
     <section class="panel"><h2>Photo & Video Upload</h2><p class="hint">Upload requires Firebase Storage to be enabled and available on your project's billing plan. If Firebase asks for a billing upgrade, stop here—do not upgrade unless you choose to.</p><input id="mediaFile" type="file" accept="image/*,video/*"><button id="uploadBtn">Upload Media</button><p id="uploadMsg" class="status" role="status">Sign in to continue.</p></section>
     <section class="panel"><h2>Temple Media Gallery</h2><div id="gallery" class="gallery"><p class="hint">Sign in to load gallery.</p></div></section>
   </section>
