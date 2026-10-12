@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Temple Owner & Members Portal</title>
+  <style>
+    :root{--maroon:#741d25;--gold:#d7a94b;--cream:#fff8e9;--ink:#342421}
+    *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#faf7f0;color:var(--ink)}
+    header{background:var(--maroon);color:white;padding:22px 16px;text-align:center}header h1{font-size:1.35rem;margin:0 0 7px}header p{margin:0;font-size:.92rem}
+    main{max-width:760px;margin:22px auto;padding:0 14px}.panel{background:white;border:1px solid #e7dfd0;border-radius:12px;padding:18px;margin-bottom:16px;box-shadow:0 3px 12px #0000000b}
+    h2{font-size:1.1rem;margin:0 0 14px;color:var(--maroon)}label{display:block;font-size:.9rem;margin:12px 0 5px}input,button{font:inherit;width:100%;padding:12px;border-radius:8px}input{border:1px solid #cfc8bb;background:#fff}button{border:0;background:var(--gold);color:#241b12;font-weight:bold;margin-top:12px;cursor:pointer}button.secondary{background:#5b5552;color:white}button.danger{background:#b42318;color:white}.hint{font-size:.88rem;line-height:1.5;color:#665c52}.status{padding:10px;border-radius:8px;background:#f6f0e3;font-size:.9rem;line-height:1.5;overflow-wrap:anywhere}.hidden{display:none!important}.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.item{border:1px solid #e5dfd5;border-radius:9px;padding:9px;overflow-wrap:anywhere}.item img,.item video{width:100%;max-height:230px;object-fit:contain;background:#f3f0ea;border-radius:6px}.item a{font-size:.85rem;display:block;margin:8px 0;color:#6d2027}.item button{padding:9px;margin-top:6px}footer{text-align:center;padding:18px;color:#786f65;font-size:.8rem}
+  </style>
+</head>
+<body>
+<header><h1>Sri Venkateshwara Swamy Temple</h1><p>Owner & Authorized Members Portal · Ganibande</p></header>
+<main>
+  <section id="setupNotice" class="panel">
+    <h2>Firebase setup required</h2>
+    <p class="hint">Firebase configuration is connected. Only accounts created by the temple owner and assigned an authorized role can enter. Never add a Firebase service-account private key here.</p>
+  </section>
+  <section id="loginPanel" class="panel">
+    <h2>Authorized Sign In</h2>
+    <label for="email">Email</label><input id="email" type="email" autocomplete="username" placeholder="Registered email">
+    <label for="password">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Password">
+    <button id="loginBtn">Sign In</button><p id="loginMsg" class="status" role="status">Only accounts created by the temple owner can sign in.</p>
+  </section>
+  <section id="portalPanel" class="hidden">
+    <div class="panel"><div id="welcome" class="status">Signed in.</div><button id="logoutBtn" class="secondary">Sign Out</button></div>
+    <section id="ownerPanel" class="panel hidden"><h2>Owner: YouTube Live Link</h2><label for="youtubeUrl">YouTube video/live URL</label><input id="youtubeUrl" type="url" placeholder="https://www.youtube.com/watch?v=..."><button id="saveYoutubeBtn">Save Live URL</button><p class="hint">Only an account with the Firestore role <b>owner</b> can change this link.</p></section>
+    <section class="panel"><h2>Photo & Video Upload</h2><p class="hint">Upload requires Firebase Storage to be enabled and available on your project's billing plan. If Firebase asks for a billing upgrade, stop here—do not upgrade unless you choose to.</p><input id="mediaFile" type="file" accept="image/*,video/*"><button id="uploadBtn">Upload Media</button><p id="uploadMsg" class="status" role="status">Sign in to continue.</p></section>
+    <section class="panel"><h2>Temple Media Gallery</h2><div id="gallery" class="gallery"><p class="hint">Sign in to load gallery.</p></div></section>
+  </section>
+</main>
+<footer>Private management portal · Access is controlled by Firebase Authentication and Firestore rules.</footer>
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
+  import { getFirestore, doc, getDoc, setDoc, collection, addDoc, getDocs, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+  import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js';
+
+  // Firebase Web App configuration for Ganibande-Temple.
+  const firebaseConfig = {
+    apiKey: 'AIzaSyARWe0ryEhtqqlAaC6ogRVCo94Fp4tJvSQ',
+    authDomain: 'ganibande-temple.firebaseapp.com',
+    projectId: 'ganibande-temple',
+    storageBucket: 'ganibande-temple.firebasestorage.app',
+    messagingSenderId: '721748696796',
+    appId: '1:721748696796:web:146c4d0e032d579ad91e19',
+    measurementId: 'G-E71D4M8GG8'
+  };
+
+  const $ = id => document.getElementById(id);
+  const loginPanel=$('loginPanel'), portalPanel=$('portalPanel'), ownerPanel=$('ownerPanel');
+  let app, auth, db, storage, currentUser=null, role=null;
+  const configReady = Boolean(firebaseConfig.apiKey && firebaseConfig.projectId && firebaseConfig.appId);
+  if (!configReady) {
+    $('loginMsg').textContent = 'Firebase config is not added yet. Add your Firebase Web App config before signing in.';
+    $('loginBtn').disabled = true;
+  } else {
+    try { app=initializeApp(firebaseConfig); auth=getAuth(app); db=getFirestore(app); storage=getStorage(app); onAuthStateChanged(auth, async user => { if(user) await showPortal(user); else showLogin(); }); }
+    catch(e){ $('loginMsg').textContent='Firebase setup error: '+e.message; }
+  }
+  function showLogin(){currentUser=null;role=null;loginPanel.classList.remove('hidden');portalPanel.classList.add('hidden');}
+  async function showPortal(user){
+    currentUser=user;
+    try {
+      const snap=await getDoc(doc(db,'users',user.uid));
+      if(!snap.exists() || !['owner','member'].includes(snap.data().role)) { await signOut(auth); $('loginMsg').textContent='This account is not authorized. Ask the temple owner to set its role.'; return; }
+      role=snap.data().role; loginPanel.classList.add('hidden'); portalPanel.classList.remove('hidden'); ownerPanel.classList.toggle('hidden',role!=='owner'); $('welcome').textContent='Signed in as '+user.email+' · Role: '+role; $('uploadMsg').textContent='Ready. Upload requires Firebase Storage access.';
+      if(role==='owner') { const ys=await getDoc(doc(db,'config','youtube')); if(ys.exists()) $('youtubeUrl').value=ys.data().url||''; }
+      await loadGallery();
+    } catch(e){ await signOut(auth); $('loginMsg').textContent='Could not verify access. Check Firestore rules and users/'+user.uid+' role document. '+e.message; }
+  }
+  $('loginBtn').addEventListener('click',async()=>{try{$('loginMsg').textContent='Signing in…';await signInWithEmailAndPassword(auth,$('email').value.trim(),$('password').value);}catch(e){$('loginMsg').textContent='Sign-in failed: '+e.message;}});
+  $('logoutBtn').addEventListener('click',async()=>{try{await signOut(auth);showLogin();}catch(e){alert(e.message);}});
+  $('saveYoutubeBtn').addEventListener('click',async()=>{
+    if(role!=='owner') return alert('Owner access required.');
+    const url=$('youtubeUrl').value.trim();
+    if(url && !/^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//i.test(url)) return alert('Enter a valid YouTube URL.');
+    try{await setDoc(doc(db,'config','youtube'),{url,updatedAt:new Date().toISOString(),updatedBy:currentUser.uid});alert('YouTube URL saved.');}catch(e){alert('Could not save URL: '+e.message);}
+  });
+  $('uploadBtn').addEventListener('click',async()=>{
+    if(!currentUser || !['owner','member'].includes(role)) return alert('Authorized sign-in required.');
+    const f=$('mediaFile').files[0]; if(!f)return alert('Select a photo or video first.');
+    $('uploadMsg').textContent='Uploading…';
+    try{const safeName=f.name.replace(/[^a-zA-Z0-9._-]/g,'_');const path=`media/${currentUser.uid}/${Date.now()}_${safeName}`;const sr=ref(storage,path);await uploadBytes(sr,f);const url=await getDownloadURL(sr);await addDoc(collection(db,'media'),{url,path,name:f.name,type:f.type.startsWith('video/')?'video':'image',uploadedBy:currentUser.uid,createdAt:new Date().toISOString()});$('uploadMsg').textContent='Upload complete.';await loadGallery();}
+    catch(e){$('uploadMsg').textContent='Upload failed: '+e.message+'. Firebase Storage may require setup/billing; do not upgrade unless you choose to.';}
+  });
+  async function loadGallery(){
+    const g=$('gallery');g.replaceChildren();
+    try{const snap=await getDocs(collection(db,'media'));if(snap.empty){g.textContent='No media uploaded yet.';return;}
+      snap.forEach(d=>{const x=d.data(),item=document.createElement('div');item.className='item';const media=x.type==='video'?document.createElement('video'):document.createElement('img');media.src=x.url;if(x.type==='video')media.controls=true;else media.alt=x.name||'Temple photo';item.appendChild(media);const link=document.createElement('a');link.href=x.url;link.target='_blank';link.rel='noopener';link.textContent=x.name||'Open media';item.appendChild(link);
+        if(role==='owner'||x.uploadedBy===currentUser.uid){const b=document.createElement('button');b.className='danger';b.textContent='Delete';b.addEventListener('click',async()=>{if(!confirm('Delete this media?'))return;try{await deleteDoc(doc(db,'media',d.id));await deleteObject(ref(storage,x.path));await loadGallery();}catch(e){alert('Delete failed: '+e.message);}});item.appendChild(b);}g.appendChild(item);});
+    }catch(e){g.textContent='Gallery could not load: '+e.message;}
+  }
+</script>
+</body>
+</html>
