@@ -286,13 +286,90 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const liveBox = document.getElementById("liveEmbed");
 
-onSnapshot(doc(db, "config", "youtube"), (snapshot) => {
-  if (!liveBox) return;
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-  const url = snapshot.exists() ? snapshot.data().url : "";
-  const match = url && url.match(
-    /(?:youtube\.com\/(?:live\/|watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/
-  );
+const firebaseConfig = {
+  apiKey: "AIzaSyARWe0ryEhtqqlAaC6ogRVCo94Fp4tJvSQ",
+  authDomain: "ganibande-temple.firebaseapp.com",
+  projectId: "ganibande-temple",
+  storageBucket: "ganibande-temple.firebasestorage.app",
+  messagingSenderId: "721748696796",
+  appId: "1:721748696796:web:146c4d0e032d579ad91e19",
+  measurementId: "G-E71D4M8GG8"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const liveBox = document.getElementById("liveEmbed");
+
+if (liveBox) {
+  const liveSection = document.getElementById("liveSection");
+  const info = liveSection?.querySelector("p");
+
+  onSnapshot(doc(db, "config", "youtube"), (snapshot) => {
+    liveBox.replaceChildren();
+    liveBox.hidden = true;
+
+    const url = snapshot.exists()
+      ? (snapshot.data().url || "").trim()
+      : "";
+
+    let parsed;
+    try {
+      parsed = new URL(url);
+    } catch {
+      if (info) info.textContent =
+        "Visit again for temple YouTube channel updates.";
+      return;
+    }
+
+    const host = parsed.hostname.replace(/^www\./, "");
+    if (!["youtube.com", "m.youtube.com", "youtu.be"].includes(host)) {
+      if (info) info.textContent =
+        "Temple YouTube channel link is not available.";
+      return;
+    }
+
+    const match = url.match(
+      /(?:youtube\.com\/(?:live\/|watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/
+    );
+
+    if (match) {
+      const iframe = document.createElement("iframe");
+      iframe.src = "https://www.youtube.com/embed/" + match[1];
+      iframe.title = "Temple Live Darshan";
+      iframe.style.cssText =
+        "width:100%;aspect-ratio:16/9;border:0;border-radius:8px";
+      iframe.allowFullscreen = true;
+      iframe.loading = "lazy";
+      liveBox.appendChild(iframe);
+      liveBox.hidden = false;
+
+      if (info) info.textContent = "Watch temple live darshan here.";
+    } else {
+      const link = document.createElement("a");
+      link.href = parsed.href;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.className = "button";
+      link.textContent = "▶ Visit Temple YouTube Channel";
+      link.style.marginTop = "12px";
+
+      liveBox.appendChild(link);
+      liveBox.hidden = false;
+
+      if (info) info.textContent =
+        "Watch temple videos and check live darshan updates on our YouTube channel.";
+    }
+  }, (error) => {
+    console.error("YouTube link could not load:", error);
+    if (info) info.textContent =
+      "YouTube channel details are temporarily unavailable.";
+  });
+}
+</script>
 
   if (match) {
     liveBox.innerHTML =
