@@ -109,7 +109,104 @@
     try{const safeName=f.name.replace(/[^a-zA-Z0-9._-]/g,'_');const path=`media/${currentUser.uid}/${Date.now()}_${safeName}`;const sr=ref(storage,path);await uploadBytes(sr,f);const url=await getDownloadURL(sr);await addDoc(collection(db,'media'),{url,path,name:f.name,type:f.type.startsWith('video/')?'video':'image',uploadedBy:currentUser.uid,createdAt:new Date().toISOString()});$('uploadMsg').textContent='Upload complete.';await loadGallery();}
     catch(e){$('uploadMsg').textContent='Upload failed: '+e.message+'. Firebase Storage may require setup/billing; do not upgrade unless you choose to.';}
   });
-  if(role === 'owner') await loadEvents();
+  
+async function loadEvents() {
+  const list = $('ownerEventsList');
+  list.replaceChildren();
+
+  if (role !== 'owner') return;
+
+  try {
+    const snap = await getDocs(collection(db, 'templeEvents'));
+
+    if (snap.empty) {
+      list.textContent = 'No temple events added yet.';
+      return;
+    }
+
+    const events = snap.docs
+      .map(d => ({ id: d.id, ...d.data() }))
+      .sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+
+    events.forEach(event => {
+      const item = document.createElement('div');
+      item.className = 'item';
+
+      const title = document.createElement('h3');
+      title.textContent = event.name || 'Temple Event';
+      item.appendChild(title);
+
+      const details = document.createElement('p');
+      details.textContent =
+        (event.date || '') + ' · ' +
+        (event.time || '') + ' · ' +
+        (event.description || '');
+      item.appendChild(details);
+
+      const btn = document.createElement('button');
+      btn.className = 'danger';
+      btn.textContent = 'Delete Event';
+
+      btn.addEventListener('click', async () => {
+        if (role !== 'owner') return;
+        if (!confirm('Delete this event?')) return;
+
+        try {
+          await deleteDoc(doc(db, 'templeEvents', event.id));
+          await loadEvents();
+        } catch (e) {
+          alert('Delete failed: ' + e.message);
+        }
+      });
+
+      list.appendChild(item);
+      item.appendChild(btn);
+    });
+  } catch (e) {
+    list.textContent = 'Events could not load: ' + e.message;
+  }
+}
+
+$('saveEventBtn').addEventListener('click', async () => {
+  if (role !== 'owner') {
+    $('eventMsg').textContent = 'Owner access required.';
+    return;
+  }
+
+  const date = $('eventDate').value;
+  const name = $('eventName').value.trim();
+  const time = $('eventTime').value.trim();
+  const description = $('eventDescription').value.trim();
+
+  if (!date || !name) {
+    $('eventMsg').textContent = 'Please enter event date and name.';
+    return;
+  }
+
+  try {
+    $('eventMsg').textContent = 'Saving event...';
+
+    await addDoc(collection(db, 'templeEvents'), {
+      date,
+      name,
+      time,
+      description,
+      createdAt: new Date().toISOString(),
+      createdBy: currentUser.uid
+    });
+
+    $('eventMsg').textContent = 'Event saved successfully.';
+    $('eventDate').value = '';
+    $('eventName').value = '';
+    $('eventTime').value = '';
+    $('eventDescription').value = '';
+
+    await loadEvents();
+  } catch (e) {
+    $('eventMsg').textContent = 'Save failed: ' + e.message;
+  }
+});
+  
   async function loadGallery(){
     const g=$('gallery');g.replaceChildren();
     try{const snap=await getDocs(collection(db,'media'));if(snap.empty){g.textContent='No media uploaded yet.';return;}
