@@ -91,7 +91,7 @@
       if(!snap.exists() || !['owner','member'].includes(snap.data().role)) { await signOut(auth); $('loginMsg').textContent='This account is not authorized. Ask the temple owner to set its role.'; return; }
       role=snap.data().role; loginPanel.classList.add('hidden'); portalPanel.classList.remove('hidden'); ownerPanel.classList.toggle('hidden',role!=='owner'); $('welcome').textContent='Signed in as '+user.email+' · Role: '+role; $('uploadMsg').textContent='Ready. Upload requires Firebase Storage access.';
       if(role==='owner') { const ys=await getDoc(doc(db,'config','youtube')); if(ys.exists()) $('youtubeUrl').value=ys.data().url||''; }
-      await loadGallery();
+     if(role === 'owner') await loadEvents(); await loadGallery();
     } catch(e){ await signOut(auth); $('loginMsg').textContent='Could not verify access. Check Firestore rules and users/'+user.uid+' role document. '+e.message; }
   }
   $('loginBtn').addEventListener('click',async()=>{try{$('loginMsg').textContent='Signing in…';await signInWithEmailAndPassword(auth,$('email').value.trim(),$('password').value);}catch(e){$('loginMsg').textContent='Sign-in failed: '+e.message;}});
