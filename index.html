@@ -533,7 +533,7 @@ try {
       reviewsList.replaceChildren();
       const message = document.createElement("p");
       message.className = "review-note";
-      message.textContent = "Reviews are not available yet. The site owner needs to finish the Firebase review setup.";
+      message.textContent = "Reviews error: " + error.code + " - " + error.message;
       reviewsList.appendChild(message);
     });
   }
