@@ -272,7 +272,7 @@ footer{background:var(--deep);color:#f9e7ca;padding:38px 22px 22px}
       <summary>Owner sign-in & media management (setup required)</summary>
       <p>This section is a placeholder for the temple owner's secure login. To let only authorised owners upload photos/videos and update the live-stream link, the website needs Firebase Authentication, Cloud Storage, a database, and security rules. Do not put an owner password directly in HTML. Setup instructions are included with the website files.</p>
       <p><strong>Important:</strong> No login is active yet, and this form does not upload media until Firebase is configured. For live darshan, the recommended simple approach is to start a YouTube Live stream and add its video link in the owner portal.</p>
-      </details>
+    </details>
   </div>
 </section>
 <section id="hall" style="background:#fffdf8">
@@ -354,11 +354,11 @@ document.getElementById('year').textContent=new Date().getFullYear();
   const languageSelect = document.getElementById("languageSelect");
   const translations = {
     kn: {
-     "navAbout":"ಪರಿಚಯ","navDarshan":"ದರ್ಶನ","navHistory":"ಇತಿಹಾಸ","navGallery":"ಚಿತ್ರಸಂಪುಟ","navHall":"ಕಾರ್ಯಕ್ರಮದ ಸಭಾಂಗಣ","navLocation":"ಸ್ಥಳ","navReviews":"ವಿಮರ್ಶೆಗಳು","About":"ಪರಿಚಯ","Darshan":"ದರ್ಶನ","History":"ಇತಿಹಾಸ","Gallery":"ಚಿತ್ರಸಂಪುಟ","Reviews":"ವಿಮರ್ಶೆಗಳು","Function Hall":"ಕಾರ್ಯಕ್ರಮದ ಸಭಾಂಗಣ","Location":"ಸ್ಥಳ","Plan Your Visit":"ಭೇಟಿ ಯೋಜಿಸಿ",
+      "navAbout":"ಪರಿಚಯ","navDarshan":"ದರ್ಶನ","navHistory":"ಇತಿಹಾಸ","navGallery":"ಚಿತ್ರಸಂಪುಟ","navHall":"ಕಾರ್ಯಕ್ರಮದ ಸಭಾಂಗಣ","navLocation":"ಸ್ಥಳ","navReviews":"ವಿಮರ್ಶೆಗಳು","About":"ಪರಿಚಯ","Darshan":"ದರ್ಶನ","History":"ಇತಿಹಾಸ","Gallery":"ಚಿತ್ರಸಂಪುಟ","Reviews":"ವಿಮರ್ಶೆಗಳು","Function Hall":"ಕಾರ್ಯಕ್ರಮದ ಸಭಾಂಗಣ","Location":"ಸ್ಥಳ","Plan Your Visit":"ಭೇಟಿ ಯೋಜಿಸಿ",
       "A place of devotion & peace":"ಭಕ್ತಿ ಮತ್ತು ಶಾಂತಿಯ ತಾಣ","Sri Venkateshwara":"ಶ್ರೀ ವೆಂಕಟೇಶ್ವರ","Swamy Temple":"ಸ್ವಾಮಿ ದೇವಸ್ಥಾನ",
       "Welcome to the sacred home of Lord Sri Venkateshwara (Venkatramana) Swamy at Ganibande. Find darshan timings, temple history, contact details, function-hall booking information and updates for devotees.":"ಗಾಣಿಬಂಡೆಯ ಶ್ರೀ ವೆಂಕಟೇಶ್ವರ (ವೆಂಕಟರಮಣ) ಸ್ವಾಮಿ ದೇವಸ್ಥಾನಕ್ಕೆ ಸ್ವಾಗತ. ದರ್ಶನ ಸಮಯ, ದೇವಸ್ಥಾನದ ಇತಿಹಾಸ, ಸಂಪರ್ಕ ವಿವರಗಳು ಮತ್ತು ಕಾರ್ಯಕ್ರಮದ ಸಭಾಂಗಣದ ಮಾಹಿತಿಯನ್ನು ಇಲ್ಲಿ ತಿಳಿಯಿರಿ.",
-      "Find the Temple ↗":"ದೇವಸ್ಥಾನಕ್ಕೆ ದಾರಿ ↗","Contact Temple":"ದೇವಸ್ಥಾನ ಸಂಪರ್ಕ","Ganibande, Srinivaspur Taluk, Kolar District, Karnataka":"ಗಣಿಬಂಡೆ, ಶ್ರೀನಿವಾಸಪುರ ತಾಲ್ಲೂಕು, ಕೋಲಾರ ಜಿಲ್ಲೆ, ಕರ್ನಾಟಕ",
-      "A Sacred Place":"ಪವಿತ್ರ ಸ್ಥಳ","Prayer, faith and devotion":"ಪ್ರಾರ್ಥನೆ, ನಂಬಿಕೆ ಮತ್ತು ಭಕ್ತಿ","Darshan Timings":"ದರ್ಶನ ಸಮಯ","Visit Ganibande":"ಗಣಿಬಂಡೆಗೆ ಭೇಟಿ ನೀಡಿ","Kolar District, Karnataka":"ಕೋಲಾರ ಜಿಲ್ಲೆ, ಕರ್ನಾಟಕ",
+      "Find the Temple ↗":"ದೇವಸ್ಥಾನಕ್ಕೆ ದಾರಿ ↗","Contact Temple":"ದೇವಸ್ಥಾನ ಸಂಪರ್ಕ","Ganibande, Srinivaspur Taluk, Kolar District, Karnataka":"ಗಾಣಿಬಂಡೆ, ಶ್ರೀನಿವಾಸಪುರ ತಾಲ್ಲೂಕು, ಕೋಲಾರ ಜಿಲ್ಲೆ, ಕರ್ನಾಟಕ",
+      "A Sacred Place":"ಪವಿತ್ರ ಸ್ಥಳ","Prayer, faith and devotion":"ಪ್ರಾರ್ಥನೆ, ನಂಬಿಕೆ ಮತ್ತು ಭಕ್ತಿ","Darshan Timings":"ದರ್ಶನ ಸಮಯ","Visit Ganibande":"ಗಾಣಿಬಂಡೆಗೆ ಭೇಟಿ ನೀಡಿ","Kolar District, Karnataka":"ಕೋಲಾರ ಜಿಲ್ಲೆ, ಕರ್ನಾಟಕ",
       "Welcome, devotees":"ಭಕ್ತರಿಗೆ ಸ್ವಾಗತ","A place to pause, pray and find peace":"ನಿಂತು ಪ್ರಾರ್ಥಿಸಿ ಶಾಂತಿ ಪಡೆಯುವ ತಾಣ",
       "Sri Venkateshwara Swamy Temple, also known locally as Sri Venkataramana Swamy Temple, is in Ganibande near Rayalpad, Srinivaspur Taluk, Kolar District, Karnataka.":"ಸ್ಥಳೀಯವಾಗಿ ಶ್ರೀ ವೆಂಕಟರಮಣ ಸ್ವಾಮಿ ದೇವಸ್ಥಾನ ಎಂದೂ ಕರೆಯಲ್ಪಡುವ ಶ್ರೀ ವೆಂಕಟೇಶ್ವರ ಸ್ವಾಮಿ ದೇವಸ್ಥಾನವು ಕರ್ನಾಟಕದ ಕೋಲಾರ ಜಿಲ್ಲೆಯ ಶ್ರೀನಿವಾಸಪುರ ತಾಲ್ಲೂಕಿನ ರಾಯಲ್ಪಾಡ್ ಸಮೀಪದ ಗಾಣಿಬಂಡೆಯಲ್ಲಿದೆ.",
       "This website shares visitor information, darshan timings, local traditions, contact details and function-hall booking enquiries for devotees.":"ಈ ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿ ಭೇಟಿ ಮಾಹಿತಿ, ದರ್ಶನ ಸಮಯ, ಸ್ಥಳೀಯ ಸಂಪ್ರದಾಯಗಳು, ಸಂಪರ್ಕ ವಿವರಗಳು ಮತ್ತು ಸಭಾಂಗಣ ವಿಚಾರಣೆಗಳಿವೆ.",
@@ -378,8 +378,8 @@ document.getElementById('year').textContent=new Date().getFullYear();
       "navAbout":"ఆలయం గురించి","navDarshan":"దర్శనం","navHistory":"చరిత్ర","navGallery":"గ్యాలరీ","navHall":"ఫంక్షన్ హాల్","navLocation":"ప్రదేశం","navReviews":"సమీక్షలు","About":"ఆలయం గురించి","Darshan":"దర్శనం","History":"చరిత్ర","Gallery":"గ్యాలరీ","Reviews":"సమీక్షలు","Function Hall":"ఫంక్షన్ హాల్","Location":"ప్రదేశం","Plan Your Visit":"మీ సందర్శనను ప్లాన్ చేయండి",
       "A place of devotion & peace":"భక్తి, ప్రశాంతతకు నిలయం","Sri Venkateshwara":"శ్రీ వెంకటేశ్వర","Swamy Temple":"స్వామి ఆలయం",
       "Welcome to the sacred home of Lord Sri Venkateshwara (Venkatramana) Swamy at Ganibande. Find darshan timings, temple history, contact details, function-hall booking information and updates for devotees.":"గాణిబండెలోని శ్రీ వెంకటేశ్వర (వెంకటరమణ) స్వామి వారి పవిత్ర ఆలయానికి స్వాగతం. దర్శన సమయాలు, ఆలయ చరిత్ర, సంప్రదింపు వివరాలు, ఫంక్షన్ హాల్ బుకింగ్ సమాచారం ఇక్కడ తెలుసుకోండి.",
-      "Find the Temple ↗":"ఆలయానికి దారి ↗","Contact Temple":"ఆలయాన్ని సంప్రదించండి","Ganibande, Srinivaspur Taluk, Kolar District, Karnataka":"గణిబండె, శ్రీనివాసపుర తాలూకా, కోలార్ జిల్లా, కర్ణాటక",
-      "A Sacred Place":"పవిత్ర స్థలం","Prayer, faith and devotion":"ప్రార్థన, విశ్వాసం, భక్తి","Darshan Timings":"దర్శన సమయాలు","Visit Ganibande":"గణిబండెను సందర్శించండి","Kolar District, Karnataka":"కోలార్ జిల్లా, కర్ణాటక",
+      "Find the Temple ↗":"ఆలయానికి దారి ↗","Contact Temple":"ఆలయాన్ని సంప్రదించండి","Ganibande, Srinivaspur Taluk, Kolar District, Karnataka":"గాణిబండె, శ్రీనివాసపుర తాలూకా, కోలార్ జిల్లా, కర్ణాటక",
+      "A Sacred Place":"పవిత్ర స్థలం","Prayer, faith and devotion":"ప్రార్థన, విశ్వాసం, భక్తి","Darshan Timings":"దర్శన సమయాలు","Visit Ganibande":"గాణిబండెను సందర్శించండి","Kolar District, Karnataka":"కోలార్ జిల్లా, కర్ణాటక",
       "Welcome, devotees":"భక్తులకు స్వాగతం","A place to pause, pray and find peace":"ఆగి ప్రార్థించి ప్రశాంతత పొందే స్థలం",
       "Sri Venkateshwara Swamy Temple, also known locally as Sri Venkataramana Swamy Temple, is in Ganibande near Rayalpad, Srinivaspur Taluk, Kolar District, Karnataka.":"స్థానికంగా శ్రీ వెంకటరమణ స్వామి ఆలయంగా కూడా పిలిచే శ్రీ వెంకటేశ్వర స్వామి ఆలయం కర్ణాటకలోని కోలార్ జిల్లా, శ్రీనివాసపుర తాలూకా, రాయల్పాడ్ సమీపంలోని గాణిబండెలో ఉంది.",
       "This website shares visitor information, darshan timings, local traditions, contact details and function-hall booking enquiries for devotees.":"ఈ వెబ్‌సైట్‌లో సందర్శకుల సమాచారం, దర్శన సమయాలు, స్థానిక సంప్రదాయాలు, సంప్రదింపు వివరాలు, ఫంక్షన్ హాల్ బుకింగ్ వివరాలు ఉంటాయి.",
@@ -394,8 +394,8 @@ document.getElementById('year').textContent=new Date().getFullYear();
       "Please be respectful. Reviews may be moderated by the temple team.":"దయచేసి గౌరవంగా రాయండి. ఆలయ నిర్వాహకులు సమీక్షలను పరిశీలించవచ్చు.",
       "Loading reviews…":"సమీక్షలు లోడ్ అవుతున్నాయి…","No reviews yet. Be the first to share feedback.":"ఇంకా సమీక్షలు లేవు. మీ అభిప్రాయాన్ని మొదటగా పంచుకోండి.",
       "Enter your name":"మీ పేరు నమోదు చేయండి","Write your review or suggestion":"మీ సమీక్ష లేదా సూచన రాయండి"
-  }
-    };
+    }
+  };
   const originals = new WeakMap();
   function translate(lang) {
     const dict = translations[lang] || {};
@@ -418,7 +418,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
       else if (lang === "en") node.nodeValue = original;
     });
     document.documentElement.lang = lang;
-    const titleMap = {en:"Sri Venkateshwara Swamy Temple | Ganibande",kn:"ಶ್ರೀ ವೆಂಕಟೇಶ್ವರ ಸ್ವಾಮಿ ದೇವಸ್ಥಾನ | ಗಣಿಬಂಡೆ",te:"శ్రీ వెంకటేశ్వర స్వామి ఆలయం | గణిబండె"};
+    const titleMap = {en:"Sri Venkateshwara Swamy Temple | Ganibande",kn:"ಶ್ರೀ ವೆಂಕಟೇಶ್ವರ ಸ್ವಾಮಿ ದೇವಸ್ಥಾನ | ಗಾಣಿಬಂಡೆ",te:"శ్రీ వెంకటేశ్వర స్వామి ఆలయం | గాణిబండె"};
     document.title = titleMap[lang] || titleMap.en;
     try { localStorage.setItem("templeLanguage", lang); } catch(e) {}
   }
@@ -435,7 +435,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, doc, onSnapshot, collection, addDoc, query, orderBy, limit, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFirestore, doc, onSnapshot, collection, addDoc, query, where, orderBy, limit, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyARWe0ryEhtqqlAaC6ogRVCo94Fp4tJvSQ",
@@ -507,7 +507,7 @@ try {
           approved: true
         });
         reviewForm.reset();
-        showReviewMessage("Thank you. Your review was submitted for approval.");
+        showReviewMessage("Thank you! Your review has been published.");
       } catch (error) {
         console.error("Review submission failed:", error);
         showReviewMessage("Reviews are not enabled yet. Please try again later or contact the temple.");
@@ -516,12 +516,10 @@ try {
       }
     });
 
-    const reviewsQuery = query(collection(db, "reviews"), orderBy("createdAt", "desc"), limit(30));
+    const reviewsQuery = query(collection(db, "reviews"), where("approved", "==", true), orderBy("createdAt", "desc"), limit(30));
     onSnapshot(reviewsQuery, (snapshot) => {
       reviewsList.replaceChildren();
-      const approvedReviews = snapshot.docs
-        .map(docSnap => docSnap.data())
-        .filter(review => review.approved !== false);
+      const approvedReviews = snapshot.docs.map(docSnap => docSnap.data());
       if (!approvedReviews.length) {
         const empty = document.createElement("p");
         empty.className = "review-note";
