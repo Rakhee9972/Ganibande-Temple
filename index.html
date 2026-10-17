@@ -956,6 +956,92 @@ document.querySelectorAll('a[target="_blank"]').forEach(function (link) {
 </script>
 
 </main>
+  
+<script type="module">
+import { initializeApp, getApps, getApp }
+  from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyARWe0ryEhtqqlAaC6ogRVCo94Fp4tJvSQ",
+  authDomain: "ganibande-temple.firebaseapp.com",
+  projectId: "ganibande-temple",
+  storageBucket: "ganibande-temple.firebasestorage.app",
+  messagingSenderId: "721748696796",
+  appId: "1:146c4d0e032d579ad91e19"
+};
+
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function displayTempleEvents() {
+  const list = document.getElementById("templeEventsList");
+  if (!list) return;
+
+  try {
+    const snapshot = await getDocs(collection(db, "templeEvents"));
+
+    if (snapshot.empty) {
+      list.textContent = "No upcoming temple events announced.";
+      return;
+    }
+
+    const today = new Date().toISOString().slice(0, 10);
+
+    const events = snapshot.docs
+      .map(doc => doc.data())
+      .filter(event => event.date && event.date >= today)
+      .sort((a, b) => a.date.localeCompare(b.date));
+
+    list.replaceChildren();
+
+    if (!events.length) {
+      list.textContent = "No upcoming temple events announced.";
+      return;
+    }
+
+    events.forEach(event => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.style.marginBottom = "16px";
+
+      const title = document.createElement("h3");
+      title.textContent = event.name || "Temple Event";
+      card.appendChild(title);
+
+      const date = document.createElement("p");
+      date.textContent = "📅 Date: " + event.date;
+      card.appendChild(date);
+
+      if (event.time) {
+        const time = document.createElement("p");
+        time.textContent = "🕒 Time: " + event.time;
+        card.appendChild(time);
+      }
+
+      if (event.description) {
+        const description = document.createElement("p");
+        description.textContent = event.description;
+        card.appendChild(description);
+      }
+
+      list.appendChild(card);
+    });
+  } catch (error) {
+    console.error("Temple events error:", error);
+    list.textContent =
+      "Events could not load. Please try again later.";
+  }
+}
+
+displayTempleEvents();
+  </script>
+  
 </body>
 </html>
 
