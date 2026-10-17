@@ -991,19 +991,29 @@ async function displayTempleEvents() {
       return;
     }
 
-    const today = new Date().toISOString().slice(0, 10);
+    
+const today = new Date().toISOString().slice(0, 10);
 
-    const events = snapshot.docs
-      .map(doc => doc.data())
-      .filter(event => event.date && event.date >= today)
-      .sort((a, b) => a.date.localeCompare(b.date));
+const allEvents = snapshot.docs
+  .map(doc => doc.data())
+  .filter(event => event.date)
+  .sort((a, b) => a.date.localeCompare(b.date));
 
-    list.replaceChildren();
+const events = allEvents.filter(event => event.date >= today);
+const pastEvents = allEvents.filter(event => event.date < today);
 
-    if (!events.length) {
-      list.textContent = "No upcoming temple events announced.";
-      return;
-    }
+list.replaceChildren();
+
+const upcomingHeading = document.createElement("h3");
+upcomingHeading.textContent = "Upcoming Temple Events";
+list.appendChild(upcomingHeading);
+
+if (!events.length) {
+  const message = document.createElement("p");
+  message.textContent = "No upcoming temple events announced.";
+  list.appendChild(message);
+}
+
 
     events.forEach(event => {
       const card = document.createElement("div");
@@ -1032,7 +1042,44 @@ async function displayTempleEvents() {
 
       list.appendChild(card);
     });
-  } catch (error) {
+const pastHeading = document.createElement("h3");
+pastHeading.textContent = "📜 Past Events";
+pastHeading.style.marginTop = "30px";
+list.appendChild(pastHeading);
+
+if (!pastEvents.length) {
+  const message = document.createElement("p");
+  message.textContent = "No past events available.";
+  list.appendChild(message);
+} else {
+  pastEvents.forEach(event => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.style.marginBottom = "16px";
+
+    const title = document.createElement("h3");
+    title.textContent = event.name || "Temple Event";
+    card.appendChild(title);
+
+    const date = document.createElement("p");
+    date.textContent = "📅 Date: " + event.date;
+    card.appendChild(date);
+
+    if (event.time) {
+      const time = document.createElement("p");
+      time.textContent = "🕒 Time: " + event.time;
+      card.appendChild(time);
+    }
+
+    if (event.description) {
+      const description = document.createElement("p");
+      description.textContent = event.description;
+      card.appendChild(description);
+    }
+
+    list.appendChild(card);
+  });
+  }  } catch (error) {
     console.error("Temple events error:", error);
     list.textContent =
       "Events could not load. Please try again later.";
