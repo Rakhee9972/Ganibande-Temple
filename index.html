@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +8,7 @@
 
 <title>Sri Venkateshwara Swamy Temple | Ganibande</title>
 
-<meta name="description"
-content="Official website of Sri Venkateshwara Swamy Temple, Ganibande. Darshan timings, temple history, festivals, live darshan and visitor information.">
+<meta name="description" content="Official website of Sri Venkateshwara Swamy Temple, Ganibande. Darshan timings, temple history, festivals, live darshan and visitor information.">
 
 <style>
 :root {
@@ -107,6 +107,7 @@ section {
   box-shadow: 0 5px 18px rgba(60, 9, 9, 0.07);
 }
 
+/* Header and navigation */
 header {
   position: sticky;
   top: 0;
@@ -164,6 +165,7 @@ header {
   cursor: pointer;
 }
 
+/* Hero section */
 .hero {
   min-height: 540px;
   display: flex;
@@ -207,6 +209,7 @@ header {
   gap: 12px;
 }
 
+/* Content layouts */
 .about-grid,
 .two-column {
   display: grid;
@@ -229,6 +232,7 @@ header {
   margin-top: 18px;
 }
 
+/* Darshan timings */
 .timing-card {
   text-align: center;
 }
@@ -257,6 +261,7 @@ header {
   border-radius: 8px;
 }
 
+/* Temple history */
 .history-content {
   max-width: 850px;
   margin: auto;
@@ -267,6 +272,7 @@ header {
   margin-bottom: 16px;
 }
 
+/* Festivals, events, gallery and reviews */
 .festival-grid,
 .gallery-grid,
 .events-grid,
@@ -311,6 +317,7 @@ header {
   font-weight: bold;
 }
 
+/* Mobile navigation and responsive layout */
 @media (max-width: 850px) {
   .menu-toggle {
     display: block;
@@ -369,22 +376,34 @@ header {
   .hero {
     min-height: 470px;
   }
+
+  .card {
+    padding: 18px;
+  }
+
+  .brand {
+    font-size: 15px;
+  }
 }
 </style>
-</head>
-
+  </head>
+  
 <body>
 
+<!-- HEADER & MOBILE MENU -->
 <header>
   <div class="container navbar">
-    <a class="brand" href="#home">
-      <span class="brand-symbol">🙏</span>
+    <a href="#home" class="brand">
+      <span class="brand-symbol">🛕</span>
       <span>Sri Venkateshwara Swamy Temple<br>Ganibande</span>
     </a>
 
-    <button class="menu-toggle" id="menuToggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false">
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="navLinks">
       ☰ Menu
     </button>
 
@@ -393,463 +412,317 @@ header {
       <a href="#about">About</a>
       <a href="#timings">Darshan Timings</a>
       <a href="#history">History</a>
+      <a href="#shlokam">Daily Shlokam</a>
       <a href="#festivals">Festivals</a>
+      <a href="#events">Events</a>
       <a href="#gallery">Gallery</a>
-      <a href="#live">Live Darshan</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
 
-<main>
-
+<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-content">
-    <div class="hero-symbol">ॐ</div>
-
-    <h1>Sri Venkateshwara Swamy Temple</h1>
-
-    <p>Ganibande, Karnataka</p>
-
-    <p>
-      Welcome to the sacred abode of Lord Sri Venkateshwara Swamy.
-      May the blessings of the Lord bring peace, happiness and prosperity
-      to everyone.
-    </p>
+    <div class="hero-symbol">🙏 🪷 🙏</div>
+    <h1 id="heroTitle">Sri Venkateshwara Swamy Temple</h1>
+    <p id="heroSubtitle">A Sacred Place of Faith, Peace and Devotion</p>
+    <p>📍 Ganibande, Srinivaspur Taluk, Kolar District, Karnataka</p>
 
     <div class="hero-buttons">
       <a href="#timings" class="btn">Darshan Timings</a>
-      <a href="#location" class="btn btn-outline">Visit Temple</a>
+      <a href="#history" class="btn btn-outline">Temple History</a>
     </div>
   </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <h2 class="section-title">About Our Temple</h2>
-
-    <p class="section-subtitle">
-      A sacred place of devotion, prayer and spiritual peace.
+    <h2 class="section-title" id="aboutHeading">About Our Temple</h2>
+    <p class="section-subtitle" id="aboutSubtitle">
+      Welcome to Sri Venkateshwara Swamy Temple, Ganibande.
     </p>
 
     <div class="about-grid">
       <div class="card">
         <h3>🙏 Welcome to the Temple</h3>
-
-        <p>
-          Sri Venkateshwara Swamy Temple, Ganibande, welcomes devotees
-          to seek the blessings of Lord Sri Venkateshwara Swamy.
-          Devotees are invited to visit the temple, participate in
-          prayers and experience the peaceful spiritual atmosphere.
-        </p>
-
-        <div class="about-highlight">
-          <strong>Govinda! Govinda!</strong>
-          <p>May Lord Venkateshwara bless all devotees.</p>
+        <div id="aboutContent">
+          <p>
+            Sri Venkateshwara Swamy Temple is a sacred place
+            for devotees seeking blessings, peace and spiritual
+            connection.
+          </p>
+          <p>
+            Devotees are welcome to visit the temple and offer
+            their prayers according to the darshan timings.
+          </p>
         </div>
       </div>
 
       <div class="card">
-        <h3>Temple Information</h3>
-
-        <p><strong>Temple:</strong>
-          Sri Venkateshwara Swamy Temple</p>
-
+        <h3>🪷 Temple Information</h3>
+        <p><strong>Temple:</strong> Sri Venkateshwara Swamy Temple</p>
         <p><strong>Village:</strong> Ganibande</p>
-
-        <p><strong>District:</strong> Kolar, Karnataka,563134</p>
-
-        <p><strong>Devotion:</strong>
-          Lord Sri Venkateshwara Swamy</p>
+        <p><strong>Taluk:</strong> Srinivaspur</p>
+        <p><strong>District:</strong> Kolar</p>
+        <p><strong>State:</strong> Karnataka</p>
+        <div class="about-highlight">
+          May Lord Venkateshwara bless all devotees with
+          peace, happiness and prosperity.
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- DARSHAN TIMINGS -->
 <section id="timings">
   <div class="container">
     <h2 class="section-title">Darshan Timings</h2>
-
     <p class="section-subtitle">
-      Plan your visit according to the temple darshan schedule.
+      Plan your visit according to the temple's daily schedule.
     </p>
 
     <div class="two-column">
       <div class="card timing-card">
-        <div class="timing-icon">🛕</div>
-        <h3>Sunday – Friday</h3>
-        <p class="timing-time">7:00 AM – 11:30 AM</p>
+        <div class="timing-icon">🌅</div>
+        <h3>Morning Darshan</h3>
+        <p class="timing-time" id="morningTiming">7:00 AM – 11:30 AM</p>
       </div>
 
       <div class="card timing-card">
-        <div class="timing-icon">🙏</div>
-        <h3>Saturday</h3>
-        <p class="timing-time">6:00 AM – 5:00 PM</p>
+        <div class="timing-icon">🌇</div>
+        <h3>Evening Darshan</h3>
+        <p class="timing-time" id="eveningTiming">
+          Please confirm with the temple.
+        </p>
       </div>
     </div>
 
-    <div class="notice">
-      <strong>Note:</strong>
-      Festival days and special occasions may have different timings.
-      Please confirm with the temple before travelling.
+    <div class="notice" id="templeStatusNotice">
+      🙏 Please confirm special-day timings before travelling.
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h3>Weekly Darshan Schedule</h3>
+      <div id="weeklyTimings">
+        <p>Sunday–Friday: 7:00 AM – 11:30 AM</p>
+        <p>Saturday: 6:00 AM – 5:00 PM</p>
+      </div>
     </div>
   </div>
 </section>
 
-
+<!-- TEMPLE HISTORY -->
 <section id="history">
   <div class="container">
-    <h2 class="section-title" id="historyTitle">Temple History</h2>
-<div style="text-align:center; margin:15px 0;">
-  <label for="historyLanguage"><strong>Select Language / ಭಾಷೆ / భాష:</strong></label>
-  <select id="historyLanguage" onchange="changeHistoryLanguage()"
-    style="padding:10px; margin:8px; border-radius:8px; border:1px solid #d6ad55;">
-    <option value="en">English</option>
-    <option value="kn">ಕನ್ನಡ (Kannada)</option>
-    <option value="te">తెలుగు (Telugu)</option>
-  </select>
-</div>
+    <h2 class="section-title" id="historyHeading">Temple History</h2>
     <p class="section-subtitle" id="historySubtitle">
-      The spiritual significance and traditions of Ganibande.
+      Discover the heritage and spiritual traditions of the temple.
     </p>
 
     <div class="card history-content">
-      <h3 id="historyHeading">Tradition, Faith and Devotion</h3>
+      <label for="historyLanguage"><strong>Read in your language</strong></label>
+      <select id="historyLanguage"
+              style="max-width:260px;margin:10px auto 25px;padding:10px;">
+        <option value="english">English</option>
+        <option value="kannada">ಕನ್ನಡ</option>
+        <option value="telugu">తెలుగు</option>
+      </select>
 
       <div id="historyContent">
         <p>
-          Sri Venkateshwara Swamy Temple is a place where devotees
-          gather to offer prayers and seek the blessings of the Lord.
-          Temple worship and religious celebrations bring the local
-          community together in devotion.
+          Sri Venkateshwara Swamy Temple at Ganibande is a
+          place of worship and devotion for the local community.
         </p>
-
-        <p>
-          The temple's detailed historical background, establishment
-          date and traditional stories can be added here after they
-          are confirmed by temple elders or the temple management.
-        </p>
-
-        <p><strong>Govinda! Govinda!</strong></p>
       </div>
     </div>
   </div>
 </section>
 
-
-<section id="daily-shlokam">
+<!-- DAILY SHLOKAM -->
+<section id="shlokam">
   <div class="container">
-    <h2 class="section-title">🙏 Daily Venkateshwara Swamy Shlokam</h2>
+    <h2 class="section-title">Daily Venkateshwara Swamy Shlokam</h2>
     <p class="section-subtitle">
-      A sacred shlokam for every day of the week.
+      Spend a moment each day in prayer and devotion.
     </p>
 
-    <div class="card" style="text-align:center;">
-      <img id="dailyGodImage"
-           src="sunday.png"
-           alt="Daily deity"
-           style="width:100%;max-width:320px;border-radius:12px;margin-bottom:16px;">
+    <div class="card" style="max-width:800px;margin:auto;text-align:center;">
+      <h3 id="shlokamDayTitle">🙏 Today's Shlokam</h3>
 
-      <h3 id="dailyGodDay">Sunday</h3>
-      <h3>శ్రీ వేంకటేశ్వర స్వామి</h3>
-      <p id="dailyShlokam">ॐ नमो वेंकटेशाय नमः ॥</p>
-      <p id="dailyShlokamMeaning">Om Namo Venkateshaya Namaha.</p>
+      <div id="shlokamImageArea" style="margin:20px auto;">
+        <img id="shlokamImage"
+             src="sunday.png"
+             alt="Daily temple shlokam"
+             style="width:100%;max-width:420px;max-height:420px;object-fit:contain;margin:auto;">
+      </div>
+
+      <div id="shlokamText" style="font-size:22px;color:var(--maroon);margin:20px 0;">
+        ॐ नमो वेङ्कटेशाय नमः ॥
+      </div>
+
+      <h3>English Meaning</h3>
+      <p id="shlokamEnglishMeaning">
+        Salutations to Lord Venkateshwara.
+      </p>
+
+      <h3 style="margin-top:20px;">ಕನ್ನಡ ಅರ್ಥ</h3>
+      <p id="shlokamKannadaMeaning">
+        ಶ್ರೀ ವೆಂಕಟೇಶ್ವರ ಸ್ವಾಮಿಗೆ ನಮಸ್ಕಾರಗಳು.
+      </p>
+
+      <h3 style="margin-top:20px;">తెలుగు అర్థం</h3>
+      <p id="shlokamTeluguMeaning">
+        శ్రీ వేంకటేశ్వర స్వామికి నమస్కారాలు.
+      </p>
     </div>
   </div>
 </section>
-  
-<section id="temple-events">
-  <div class="container">
-    <h2 class="section-title">Temple Events & Special Poojas</h2>
-    <p class="section-subtitle">
-      Upcoming temple events, special poojas and festival celebrations.
-    </p>
-    <div id="templeEventsList">
-      <p class="section-subtitle">Loading temple events...</p>
-    </div>
-  </div>
-  </section>
-  
 
+<!-- FESTIVALS -->
 <section id="festivals">
   <div class="container">
-    <h2 class="section-title">Festivals & Celebrations</h2>
-
+    <h2 class="section-title">Temple Festivals</h2>
     <p class="section-subtitle">
-      Join the devotees in celebrating special occasions and
-      temple traditions.
+      Celebrate the temple's sacred occasions and traditions.
     </p>
 
     <div class="festival-grid">
       <div class="card festival-card">
-        <div class="emoji">🙏</div>
-        <h3>Daily Pooja</h3>
-        <p>
-          Devotees can visit the temple during darshan hours
-          and offer their prayers to Lord Venkateshwara Swamy.
+        <div class="emoji">🪷</div>
+        <h3>Annual Jatara</h3>
+        <p id="jataraSummary">
+          Visit this section for annual festival dates and programme details.
         </p>
+        <p id="jataraDate"></p>
+        <div id="jataraSchedule"></div>
       </div>
 
       <div class="card festival-card">
-        <div class="emoji">🪔</div>
+        <div class="emoji">🙏</div>
         <h3>Special Poojas</h3>
         <p>
-          Special poojas and religious activities may be
-          conducted on important occasions. Contact the temple
-          for confirmed dates and details.
+          Details of special poojas and religious observances
+          will be announced here.
         </p>
       </div>
 
       <div class="card festival-card">
-        <div class="emoji">🌺</div>
-        <h3>Festival Celebrations</h3>
-        <p>
-          Festival programmes and celebrations can be announced
-          here after the temple management confirms the schedule.
+        <div class="emoji">🍚</div>
+        <h3>Annadanam</h3>
+        <p id="annadanamInfo">
+          Festival-day annadanam details will be announced here.
         </p>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="notice">
-      <strong>Festival updates:</strong>
-      Please check the temple's official announcements or
-      contact the temple for the latest programme and timings.
+<!-- EVENTS -->
+<section id="events">
+  <div class="container">
+    <h2 class="section-title">Temple Events & Announcements</h2>
+    <p class="section-subtitle">
+      Upcoming programmes and important temple announcements.
+    </p>
+
+    <div id="eventsList" class="events-grid">
+      <div class="card">
+        <h3>Temple Announcements</h3>
+        <p>New announcements will appear here when published.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- GALLERY -->
 <section id="gallery">
   <div class="container">
-    <h2 class="section-title">Temple Photo Gallery</h2>
-
+    <h2 class="section-title">Temple Gallery</h2>
     <p class="section-subtitle">
-      Explore photographs of the temple and its celebrations.
-      Tap a photograph to view it larger.
+      Photos of the temple and its spiritual surroundings.
     </p>
 
-    <div class="gallery-grid">
-
-      <button class="gallery-item"
-              type="button"
-              data-image="ganibande-temple.png.png"
-              data-caption="Sri Venkateshwara Swamy Temple">
-        <img
-          src="ganibande-temple.png.png"
-          alt="Sri Venkateshwara Swamy Temple Ganibande"
-          loading="lazy">
-        <div class="gallery-caption">Temple View</div>
-      </button>
-
-      <button class="gallery-item"
-              type="button"
-              data-image="temple-deity.png.png"
-              data-caption="Lord Sri Venkateshwara Swamy">
-        <img
-          src="temple-deity.png.png"
-          alt="Lord Sri Venkateshwara Swamy"
-          loading="lazy">
-        <div class="gallery-caption">Deity Darshan</div>
-      </button>
-
-      <button class="gallery-item"
-              type="button"
-              data-image="temple-festival.png.png"
-              data-caption="Temple Festival Celebrations">
-        <img
-          src="temple-festival.png.png"
-          alt="Temple festival celebrations"
-          loading="lazy">
-        <div class="gallery-caption">Festival Celebrations</div>
-      </button>
-
+    <div id="galleryGrid" class="gallery-grid">
+      <!-- Existing temple gallery items will be preserved
+           and connected in Part 3. -->
     </div>
-
-    <p class="section-subtitle" style="margin-top:20px;">
-      Note: Replace these example image filenames with your
-      actual image filenames in GitHub if they are different.
-    </p>
   </div>
 </section>
 
-<!-- Gallery image viewer -->
-<div id="lightbox"
-     style="display:none; position:fixed; inset:0; z-index:2000;
-            background:rgba(0,0,0,.92); padding:20px;
-            align-items:center; justify-content:center;
-            flex-direction:column;"
-     role="dialog"
-     aria-modal="true"
-     aria-label="Gallery image viewer">
-
-  <button id="closeLightbox"
-          type="button"
-          aria-label="Close image"
-          style="position:absolute;top:15px;right:20px;
-                 font-size:32px;background:none;border:none;
-                 color:white;cursor:pointer;">
-    &times;
-  </button>
-
-  <img id="lightboxImage"
-       src=""
-       alt=""
-       style="max-width:95%;max-height:78vh;
-              object-fit:contain;border-radius:8px;">
-
-  <p id="lightboxCaption"
-     style="color:white;text-align:center;margin-top:14px;">
-  </p>
-</div>
-
+<!-- YOUTUBE LIVE -->
 <section id="live">
   <div class="container">
-    <h2 class="section-title">Live Darshan & YouTube</h2>
-
+    <h2 class="section-title">Temple YouTube Channel</h2>
     <p class="section-subtitle">
-      Watch temple videos and visit the official YouTube channel
-      for available live streams and devotional updates.
+      Visit the temple's YouTube channel for available videos
+      and live programmes.
     </p>
 
     <div class="card" style="text-align:center;">
-      <div style="font-size:42px;margin-bottom:12px;">▶️</div>
-
-      <h3>Temple YouTube Channel</h3>
-
-      <p style="margin-bottom:20px;">
-        Watch available temple videos, devotional programmes
-        and live darshan when streaming is available.
+      <p style="font-size:40px;">▶️</p>
+      <h3>Watch Temple Videos</h3>
+      <p style="margin:12px 0 20px;">
+        Open the official temple YouTube channel.
       </p>
-
-      <!--
-        IMPORTANT:
-        In Part 4, we will connect this section to your existing
-        YouTube channel link. Do not remove your old channel URL.
-      -->
-
-      <a id="youtubeChannelLink"
+      <a id="youtubeLink"
          class="btn"
-         href="https://www.youtube.com/"
+         href="https://youtube.com/channel/UCbLxXJ7hKYMul8ZX8jfuLDw?si=y9pQxtkzMaQIiqLE"
          target="_blank"
          rel="noopener noreferrer">
-        Visit YouTube Channel
+        Open YouTube Channel
       </a>
-
-      <p style="margin-top:15px;font-size:14px;color:#6d5a4a;">
-        Live streaming depends on the temple's broadcast schedule.
-      </p>
     </div>
   </div>
 </section>
 
-<section id="hall">
+<!-- FUNCTION HALL -->
+<section id="functionHall">
   <div class="container">
-    <h2 class="section-title">Function Hall & Facilities</h2>
-
+    <h2 class="section-title">Function Hall Enquiry</h2>
     <p class="section-subtitle">
-      Contact the temple representatives for information about
-      available facilities and function hall arrangements.
+      Contact the temple for function hall availability and details.
     </p>
 
-    <div class="two-column">
-      <div class="card">
-        <h3>🏛️ Function Hall Enquiry</h3>
-
-        <p>
-          For function hall availability, bookings, permitted
-          activities and other arrangements, please contact
-          the temple representatives directly.
-        </p>
-
-        <p style="margin-top:15px;">
-          <strong>Please confirm:</strong>
-        </p>
-
-        <ul style="padding-left:22px;margin:10px 0 20px;">
-          <li>Availability and booking dates</li>
-          <li>Facilities and seating capacity</li>
-          <li>Booking charges, if applicable</li>
-          <li>Rules and conditions</li>
-        </ul>
-
-        <a class="btn"
+    <div class="card" style="max-width:700px;margin:auto;text-align:center;">
+      <h3>Function Hall Information</h3>
+      <p id="functionHallInfo">
+        For booking details, availability and facilities,
+        please contact the temple.
+      </p>
+      <p style="margin-top:15px;">
+        <strong>Contact:</strong>
+        <span id="functionHallPhone">Contact the temple</span>
+      </p>
+      <div style="margin-top:20px;">
+        <a id="functionWhatsAppLink"
+           class="btn"
            href="#contact">
-          Contact Temple
+          WhatsApp Enquiry
         </a>
       </div>
-
-      <div class="card">
-        <h3>🙏 Visitor Guidance</h3>
-
-        <p>
-          Devotees are requested to maintain cleanliness
-          and respect the temple's customs and traditions.
-        </p>
-
-        <ul style="padding-left:22px;margin-top:12px;">
-          <li>Follow the temple's instructions.</li>
-          <li>Keep the premises clean.</li>
-          <li>Respect other devotees.</li>
-          <li>Confirm special darshan timings in advance.</li>
-          <li>Ask temple representatives about available facilities.</li>
-        </ul>
-      </div>
     </div>
   </div>
 </section>
 
+<!-- CONTACT AND LOCATION -->
 <section id="contact">
   <div class="container">
-    <h2 class="section-title">Contact the Temple</h2>
-
+    <h2 class="section-title">Contact & Location</h2>
     <p class="section-subtitle">
-      For darshan information, festival schedules and other
-      enquiries, contact the temple representatives.
+      We welcome devotees to Sri Venkateshwara Swamy Temple.
     </p>
 
     <div class="two-column">
       <div class="card">
-        <h3>📞 Contact Information</h3>
-
-        <p>
-          <strong>Temple:</strong>
-          Sri Venkateshwara Swamy Temple
-        </p>
-
-        <p>
-          <strong>Village:</strong> Ganibande
-        </p>
-
-        <p style="margin-top:12px;">
-          <strong>Phone numbers:</strong>
-        </p>
-
-        <!-- Verify these numbers before publishing. -->
-        <p>
-          <a href="tel:+919449378506">
-            +91 94493 78506
-          </a>
-        </p>
-
-        <p>
-          <a href="tel:+918861779628">
-            +91 88617 79628
-          </a>
-        </p>
-
-        <p style="font-size:13px;margin-top:15px;color:#6d5a4a;">
-          Please verify these contact numbers with the temple
-          management before publishing the website.
-        </p>
-      </div>
-
-      <div class="card" id="location">
-        <h3>📍 Temple Location</h3>
-
-        <p>
-          Sri Venkateshwara Swamy Temple,
-          Ganibande, Gownipalli–Rayalpadu Road,
-          Rayalpad, Srinivaspur Taluk,
-          Kolar District, Karnataka – 563134.
+        <h3>📍 Temple Address</h3>
+        <p id="templeAddress">
+          Sri Venkateshwara Swamy Temple,<br>
+          Ganibande, Yaramvaripalli Post,<br>
+          Rayalpad Hobli, Srinivaspur Taluk,<br>
+          Kolar District, Karnataka, India.
         </p>
 
         <a class="btn"
@@ -857,147 +730,37 @@ header {
            href="https://www.google.com/maps/search/?api=1&query=Sri+Venkateshwara+Swamy+Temple+Ganibande+Kolar+Karnataka"
            target="_blank"
            rel="noopener noreferrer">
-          Open in Google Maps
+          Open Google Maps
         </a>
+      </div>
 
-        <p style="font-size:13px;margin-top:12px;color:#6d5a4a;">
-          Google Maps search opens the temple search results.
-          Please confirm the correct map pin.
-        </p>
+      <div class="card">
+        <h3>☎️ Contact the Temple</h3>
+        <p id="templePhone">Please confirm the temple contact number.</p>
+        <p id="templeEmail" style="margin-top:10px;"></p>
+        <p id="templeFacilities" style="margin-top:15px;"></p>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- Footer -->
-<footer style="background:#3c0909;color:white;padding:35px 0;
-               text-align:center;border-top:3px solid #d8ad52;">
-  <div class="container">
-    <div style="font-size:30px;color:#d8ad52;">🙏</div>
-
-    <h3 style="color:#d8ad52;margin-bottom:8px;">
-      Sri Venkateshwara Swamy Temple
-    </h3>
-
-    <p>Ganibande, Kolar District, Karnataka</p>
-
-    <p style="margin-top:10px;">
-      Govinda! Govinda!
-    </p>
-
-    <p style="font-size:13px;margin-top:18px;color:#e7d7c3;">
-      © <span id="currentYear"></span>
-      Sri Venkateshwara Swamy Temple, Ganibande.
-    </p>
-  </div>
+<!-- FOOTER -->
+<footer style="background:var(--dark-maroon);color:white;text-align:center;padding:28px 15px;border-top:3px solid var(--gold);">
+  <p>🙏 Sri Venkateshwara Swamy Temple, Ganibande 🙏</p>
+  <p style="margin-top:8px;font-size:14px;">
+    May Lord Venkateshwara bless all devotees.
+  </p>
+  <p style="margin-top:12px;font-size:12px;color:#e8d7b0;">
+    Temple information is maintained by authorized temple members.
+  </p>
 </footer>
 
-<script>
-/* Mobile navigation menu */
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-
-if (menuToggle && navLinks) {
-  menuToggle.addEventListener("click", function () {
-    const isOpen = navLinks.classList.toggle("active");
-
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-    menuToggle.textContent = isOpen ? "✕ Close" : "☰ Menu";
-  });
-
-  navLinks.querySelectorAll("a").forEach(function (link) {
-    link.addEventListener("click", function () {
-      navLinks.classList.remove("active");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.textContent = "☰ Menu";
-    });
-  });
-}
-
-/* Automatically update footer year */
-const yearElement = document.getElementById("currentYear");
-
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
-}
-
-/* Gallery image lightbox */
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-const lightboxCaption = document.getElementById("lightboxCaption");
-const closeLightbox = document.getElementById("closeLightbox");
-
-document.querySelectorAll(".gallery-item").forEach(function (item) {
-  item.addEventListener("click", function () {
-    const imagePath = item.getAttribute("data-image");
-    const caption = item.getAttribute("data-caption") || "";
-
-    lightboxImage.src = imagePath;
-    lightboxImage.alt = caption;
-    lightboxCaption.textContent = caption;
-
-    lightbox.style.display = "flex";
-  });
-});
-
-function hideLightbox() {
-  if (lightbox) {
-    lightbox.style.display = "none";
-    lightboxImage.src = "";
-  }
-}
-
-if (closeLightbox) {
-  closeLightbox.addEventListener("click", hideLightbox);
-}
-
-if (lightbox) {
-  lightbox.addEventListener("click", function (event) {
-    if (event.target === lightbox) {
-      hideLightbox();
-    }
-  });
-}
-
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") {
-    hideLightbox();
-  }
-});
-
-/*
-  YOUTUBE LINK:
-  In Part 5, check the existing link and update the URL below
-  to your actual temple YouTube channel URL.
-*/
-const templeYouTubeURL = "https://youtube.com/channel/UCbLxXJ7hKYMul8ZX8jfuLDw?si=y9pQxtkzMaQIiqLE";
-
-const youtubeButton = document.getElementById("youtubeChannelLink");
-
-if (youtubeButton && templeYouTubeURL.trim() !== "") {
-  youtubeButton.href = templeYouTubeURL;
-}
-</script>
-
-<!-- Basic accessibility and link checks -->
-<script>
-document.querySelectorAll('a[target="_blank"]').forEach(function (link) {
-  link.setAttribute("rel", "noopener noreferrer");
-
-});
-</script>
-
-</main>
-  
 <script type="module">
 import { initializeApp, getApps, getApp }
   from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 
 import {
-  getFirestore,
-  collection,
-  getDocs
+  getFirestore, collection, getDocs, doc, getDoc, onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -1012,49 +775,42 @@ const firebaseConfig = {
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+/* 1. TEMPLE EVENTS */
 async function displayTempleEvents() {
   const list = document.getElementById("templeEventsList");
   if (!list) return;
 
   try {
     const snapshot = await getDocs(collection(db, "templeEvents"));
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const todayText = [
+      today.getFullYear(),
+      String(today.getMonth() + 1).padStart(2, "0"),
+      String(today.getDate()).padStart(2, "0")
+    ].join("-");
 
-    if (snapshot.empty) {
-      list.textContent = "No upcoming temple events announced.";
-      return;
+    const all = snapshot.docs
+      .map(item => ({ id: item.id, ...item.data() }))
+      .filter(item => item.date)
+      .sort((a, b) => String(a.date).localeCompare(String(b.date)));
+
+    list.replaceChildren();
+
+    function heading(text) {
+      const h = document.createElement("h3");
+      h.textContent = text;
+      h.style.margin = "20px 0 12px";
+      list.appendChild(h);
     }
 
-    
-const today = new Date().toISOString().slice(0, 10);
-
-const allEvents = snapshot.docs
-  .map(doc => doc.data())
-  .filter(event => event.date)
-  .sort((a, b) => a.date.localeCompare(b.date));
-
-const events = allEvents.filter(event => event.date >= today);
-const pastEvents = allEvents.filter(event => event.date < today);
-
-list.replaceChildren();
-
-const upcomingHeading = document.createElement("h3");
-upcomingHeading.textContent = "Upcoming Temple Events";
-list.appendChild(upcomingHeading);
-
-if (!events.length) {
-  const message = document.createElement("p");
-  message.textContent = "No upcoming temple events announced.";
-  list.appendChild(message);
-}
-
-
-    events.forEach(event => {
+    function showEvent(event) {
       const card = document.createElement("div");
       card.className = "card";
       card.style.marginBottom = "16px";
 
       const title = document.createElement("h3");
-      title.textContent = event.name || "Temple Event";
+      title.textContent = event.name || event.title || "Temple Event";
       card.appendChild(title);
 
       const date = document.createElement("p");
@@ -1070,178 +826,346 @@ if (!events.length) {
       if (event.description) {
         const description = document.createElement("p");
         description.textContent = event.description;
+        description.style.whiteSpace = "pre-line";
         card.appendChild(description);
       }
 
+      const schedule = event.programSchedule || event.schedule;
+      if (schedule) {
+        const p = document.createElement("p");
+        p.style.whiteSpace = "pre-line";
+        p.textContent = "🪔 Programme Schedule:\n" + schedule;
+        card.appendChild(p);
+      }
+
+      const food = event.annadanam || event.annadanamDetails;
+      if (food) {
+        const p = document.createElement("p");
+        p.textContent = "🍚 Annadanam: " + food;
+        card.appendChild(p);
+      }
+
       list.appendChild(card);
-    });
-const pastHeading = document.createElement("h3");
-pastHeading.textContent = "📜 Past Events";
-pastHeading.style.marginTop = "30px";
-list.appendChild(pastHeading);
-
-if (!pastEvents.length) {
-  const message = document.createElement("p");
-  message.textContent = "No past events available.";
-  list.appendChild(message);
-} else {
-  pastEvents.forEach(event => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.style.marginBottom = "16px";
-
-    const title = document.createElement("h3");
-    title.textContent = event.name || "Temple Event";
-    card.appendChild(title);
-
-    const date = document.createElement("p");
-    date.textContent = "📅 Date: " + event.date;
-    card.appendChild(date);
-
-    if (event.time) {
-      const time = document.createElement("p");
-      time.textContent = "🕒 Time: " + event.time;
-      card.appendChild(time);
     }
 
-    if (event.description) {
-      const description = document.createElement("p");
-      description.textContent = event.description;
-      card.appendChild(description);
+    const upcoming = all.filter(e => String(e.date) >= todayText);
+    const past = all.filter(e => String(e.date) < todayText);
+
+    heading("Upcoming Temple Events");
+    if (upcoming.length) upcoming.forEach(showEvent);
+    else {
+      const p = document.createElement("p");
+      p.textContent = "No upcoming temple events announced.";
+      list.appendChild(p);
     }
 
-    list.appendChild(card);
-  });
-  }  } catch (error) {
+    heading("📜 Past Events");
+    if (past.length) past.forEach(showEvent);
+    else {
+      const p = document.createElement("p");
+      p.textContent = "No past events available.";
+      list.appendChild(p);
+    }
+  } catch (error) {
     console.error("Temple events error:", error);
-    list.textContent =
-      "Events could not load. Please try again later.";
+    list.textContent = "Events could not load. Please try again later.";
   }
 }
 
 displayTempleEvents();
-  
-async function loadTempleHistoryContent() {
-  try {
-    const historyRef = await getDocs(
-      collection(db, "websiteContent")
-    );
 
-    const historyDoc = historyRef.docs.find(
-      doc => doc.id === "history"
-    );
+/* 2. TEMPLE HISTORY: ENGLISH / KANNADA / TELUGU */
+let savedHistory = null;
 
-    if (!historyDoc) {
-      console.log("No saved Temple History content found.");
-      return;
-    }
+function renderHistoryLanguage(language) {
+  const data = savedHistory || {};
+  const lang = language || "en";
 
-    const data = historyDoc.data();
+  const titleMap = {
+    en: data.title || "Temple History",
+    kn: data.kannadaTitle || data.titleKannada || "ದೇವಾಲಯದ ಇತಿಹಾಸ",
+    te: data.teluguTitle || data.titleTelugu || "ఆలయ చరిత్ర"
+  };
 
-    if (data.title) {
-      
-    }
+  const subtitleMap = {
+    en: data.subtitle || "The spiritual significance and traditions of Ganibande.",
+    kn: data.kannadaSubtitle || data.subtitleKannada || "ಗಣಿಬಂಡೆಯ ಆಧ್ಯಾತ್ಮಿಕ ಮಹತ್ವ ಮತ್ತು ಸಂಪ್ರದಾಯಗಳು.",
+    te: data.teluguSubtitle || data.subtitleTelugu || "గణిబండె ఆధ్యాత్మిక ప్రాముఖ్యత మరియు సంప్రదాయాలు."
+  };
 
-    if (data.english) {
-      const content = document.getElementById("historyContent");
-      content.textContent = data.english;
+  const contentMap = {
+    en: data.english,
+    kn: data.kannada || data.kannadaContent,
+    te: data.telugu || data.teluguContent
+  };
+
+  const mainTitle = document.getElementById("historyTitle");
+  const heading = document.getElementById("historyHeading");
+  const subtitle = document.getElementById("historySubtitle");
+  const content = document.getElementById("historyContent");
+
+  if (mainTitle) mainTitle.textContent = titleMap[lang];
+  if (heading) heading.textContent = titleMap[lang];
+  if (subtitle) subtitle.textContent = subtitleMap[lang];
+
+  if (content) {
+    const text = contentMap[lang] || contentMap.en;
+    if (text) {
+      content.textContent = text;
       content.style.whiteSpace = "pre-line";
     }
-
-    if (data.title) {
-      document.getElementById("historyHeading").textContent =
-        data.title;
-    }
-  } catch (error) {
-    console.error("Temple History load error:", error);
   }
 }
 
-loadTempleHistoryContent();
-                  
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
+window.changeHistoryLanguage = function () {
+  const selector = document.getElementById("historyLanguage");
+  renderHistoryLanguage(selector ? selector.value : "en");
+};
 
-if (menuToggle && navLinks) {
-menuToggle.addEventListener("click", function () {
-const isOpen = navLinks.classList.toggle("active");
-
-menuToggle.innerHTML = isOpen ? "✕ Close" : "☰ Menu";
-
-menuToggle.setAttribute("aria-expanded", isOpen);
-menuToggle.setAttribute(
-  "aria-label",
-  isOpen ? "Close navigation menu" : "Open navigation menu"
-);
-
-});
-
-navLinks.querySelectorAll("a").forEach(function (link) {
-link.addEventListener("click", function () {
-navLinks.classList.remove("active");
-menuToggle.innerHTML = "☰ Menu";
-menuToggle.setAttribute("aria-expanded", "false");
-menuToggle.setAttribute("aria-label", "Open navigation menu");
-});
-});
+async function loadHistory() {
+  try {
+    const snap = await getDoc(doc(db, "websiteContent", "history"));
+    if (snap.exists()) savedHistory = snap.data();
+    renderHistoryLanguage(
+      document.getElementById("historyLanguage")?.value || "en"
+    );
+  } catch (error) {
+    console.error("History load error:", error);
   }
-  
-const dailyDayNames = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
+}
+
+async function loadAbout() {
+  try {
+    const snap = await getDoc(doc(db, "websiteContent", "about"));
+    if (!snap.exists()) return;
+
+    const data = snap.data();
+    const heading = document.getElementById("aboutHeading");
+    const content = document.getElementById("aboutContent");
+
+    if (heading && data.title) heading.textContent = data.title;
+    if (content && data.english) {
+      content.textContent = data.english;
+      content.style.whiteSpace = "pre-line";
+    }
+  } catch (error) {
+    console.error("About section load error:", error);
+  }
+}
+
+loadHistory();
+loadAbout();
+
+/* 3. DAILY SHLOKAM — KEEP EXISTING IMAGE FILES */
+const dayNames = [
+  "Sunday", "Monday", "Tuesday", "Wednesday",
+  "Thursday", "Friday", "Saturday"
 ];
 
-const dailyImages = [
-  "sunday.png",
-  "monday.png",
-  "tuesday.png",
-  "wednesday.png",
-  "thursday.png",
-  "friday.png",
-  "saturday.png"
+const dayImages = [
+  "sunday.png", "monday.png", "tuesday.png",
+  "wednesday.png", "thursday.png", "friday.png", "saturday.png"
 ];
 
-const dailyShlokams = [
-  "ॐ नमो वेंकटेशाय नमः ॥",
-  "ॐ श्रीनिवासाय नमः ॥",
-  "ॐ वेंकटेश्वराय नमः ॥",
-  "ॐ गोविन्दाय नमः ॥",
-  "ॐ नारायणाय नमः ॥",
-  "ॐ पद्मावतीपतये नमः ॥",
-  "ॐ बालाजी नमः ॥"
+const defaultShlokams = [
+  {
+    text: "ॐ नमो वेंकटेशाय नमः ॥",
+    english: "Om Namo Venkateshaya Namaha.",
+    kannada: "ಓಂ ನಮೋ ವೆಂಕಟೇಶಾಯ ನಮಃ.",
+    telugu: "ఓం నమో వేంకటేశాయ నమః."
+  },
+  {
+    text: "ॐ श्रीनिवासाय नमः ॥",
+    english: "Om Srinivasaya Namaha.",
+    kannada: "ಓಂ ಶ್ರೀನಿವಾಸಾಯ ನಮಃ.",
+    telugu: "ఓం శ్రీనివాసాయ నమః."
+  },
+  {
+    text: "ॐ वेंकटेश्वराय नमः ॥",
+    english: "Om Venkateshwaraya Namaha.",
+    kannada: "ಓಂ ವೆಂಕಟೇಶ್ವರಾಯ ನಮಃ.",
+    telugu: "ఓం వేంకటేశ్వరాయ నమః."
+  },
+  {
+    text: "ॐ गोविन्दाय नमः ॥",
+    english: "Om Govindaya Namaha.",
+    kannada: "ಓಂ ಗೋವಿಂದಾಯ ನಮಃ.",
+    telugu: "ఓం గోవిందాయ నమః."
+  },
+  {
+    text: "ॐ नारायणाय नमः ॥",
+    english: "Om Narayanaya Namaha.",
+    kannada: "ಓಂ ನಾರಾಯಣಾಯ ನಮಃ.",
+    telugu: "ఓం నారాయణాయ నమః."
+  },
+  {
+    text: "ॐ पद्मावतीपतये नमः ॥",
+    english: "Om Padmavathipataye Namaha.",
+    kannada: "ಓಂ ಪದ್ಮಾವತೀಪತಯೇ ನಮಃ.",
+    telugu: "ఓం పద్మావతీపతయే నమః."
+  },
+  {
+    text: "ॐ बालाजी नमः ॥",
+    english: "Om Balaji Namaha.",
+    kannada: "ಓಂ ಬಾಲಾಜಿ ನಮಃ.",
+    telugu: "ఓం బాలాజీ నమః."
+  }
 ];
 
-const dailyMeanings = [
-  "Om Namo Venkateshaya Namaha.",
-  "Om Srinivasaya Namaha.",
-  "Om Venkateshwaraya Namaha.",
-  "Om Govindaya Namaha.",
-  "Om Narayanaya Namaha.",
-  "Om Padmavathipataye Namaha.",
-  "Om Balaji Namaha."
-];
+function renderShlokam(data) {
+  const index = new Date().getDay();
+  const item = data?.[dayNames[index]] || data?.[index] || {};
+  const fallback = defaultShlokams[index];
 
-const today = new Date().getDay();
+  const day = document.getElementById("dailyGodDay");
+  const image = document.getElementById("dailyGodImage");
+  const text = document.getElementById("dailyShlokam");
+  const english = document.getElementById("dailyShlokamMeaning");
 
-const dayElement = document.getElementById("dailyGodDay");
-const imageElement = document.getElementById("dailyGodImage");
-const shlokamElement = document.getElementById("dailyShlokam");
-const meaningElement = document.getElementById("dailyShlokamMeaning");
+  if (day) day.textContent = dayNames[index];
+  if (image) image.src = dayImages[index];
+  if (text) text.textContent = item.text || item.shlokam || fallback.text;
+  if (english) {
+    english.textContent =
+      item.english || item.englishMeaning || item.meaning || fallback.english;
+  }
 
-if (dayElement) dayElement.textContent = dailyDayNames[today];
-if (imageElement) imageElement.src = dailyImages[today];
-if (shlokamElement) shlokamElement.textContent = dailyShlokams[today];
-if (meaningElement) meaningElement.textContent = dailyMeanings[today];
-  
-  </script>
-  
+  let extra = document.getElementById("dailyShlokamOtherMeanings");
+  if (!extra && english) {
+    extra = document.createElement("p");
+    extra.id = "dailyShlokamOtherMeanings";
+    extra.style.whiteSpace = "pre-line";
+    english.after(extra);
+  }
+
+  if (extra) {
+    extra.textContent =
+      "ಕನ್ನಡ: " + (item.kannada || item.kannadaMeaning || fallback.kannada) +
+      "\nతెలుగు: " + (item.telugu || item.teluguMeaning || fallback.telugu);
+  }
+}
+
+async function loadShlokam() {
+  try {
+    const snap = await getDoc(doc(db, "config", "dailyShlokams"));
+    renderShlokam(
+      snap.exists() ? (snap.data().days || snap.data().shlokams || {}) : {}
+    );
+  } catch (error) {
+    console.error("Shlokam load error:", error);
+    renderShlokam({});
+  }
+}
+
+loadShlokam();
+
+/* 4. DARSHAN TIMINGS */
+const defaultTimings = {};
+dayNames.forEach((day, index) => {
+  defaultTimings[day] = {
+    morning: index === 6 ? "6:00 AM – 5:00 PM" : "7:00 AM – 11:30 AM",
+    evening: "",
+    status: "open"
+  };
+});
+
+function renderTimings(data) {
+  const days = data?.days || data?.timings || {};
+  const grid = document.getElementById("dayTimingGrid");
+  const notice = document.getElementById("templeClosedNotice");
+  if (!grid) return;
+
+  const today = dayNames[new Date().getDay()];
+  const todayInfo = days[today] || defaultTimings[today];
+
+  if (notice) {
+    notice.hidden =
+      String(todayInfo.status || "open").toLowerCase() !== "closed";
+  }
+
+  grid.replaceChildren();
+
+  dayNames.forEach((day, index) => {
+    const info = days[day] || defaultTimings[day];
+    const closed = String(info.status || "open").toLowerCase() === "closed";
+
+    const card = document.createElement("div");
+    card.className = "card timing-card";
+
+    const icon = document.createElement("div");
+    icon.className = "timing-icon";
+    icon.textContent = index === 6 ? "🙏" : "🛕";
+    card.appendChild(icon);
+
+    const h = document.createElement("h3");
+    h.textContent = day;
+    card.appendChild(h);
+
+    const time = document.createElement("p");
+    time.className = "timing-time";
+    time.textContent = closed
+      ? "Temple Closed"
+      : [info.morning || info.morningTiming || defaultTimings[day].morning,
+         info.evening || info.eveningTiming || ""].filter(Boolean).join(" | ");
+    card.appendChild(time);
+
+    const status = document.createElement("span");
+    status.className = "temple-status " + (closed ? "closed" : "open");
+    status.textContent = closed ? "Closed" : "Open";
+    card.appendChild(status);
+
+    grid.appendChild(card);
+  });
+}
+
+async function loadTimings() {
+  try {
+    const snap = await getDoc(doc(db, "config", "darshanTimings"));
+    renderTimings(snap.exists() ? snap.data() : {});
+  } catch (error) {
+    console.error("Timings load error:", error);
+    renderTimings({});
+  }
+}
+
+loadTimings();
+
+/* 5. FUNCTION HALL / TEMPLE CONTACT */
+async function loadTempleInfo() {
+  try {
+    const snap = await getDoc(doc(db, "config", "templeInfo"));
+    if (!snap.exists()) return;
+
+    const info = snap.data();
+    const rawPhone =
+      info.functionHallPhone || info.phone || info.contactNumber || "";
+    const phone = String(rawPhone).replace(/[^\d+]/g, "");
+    const waNumber = phone.replace(/\D/g, "");
+
+    const wa = document.getElementById("functionHallWhatsApp");
+    const call = document.getElementById("functionHallCall");
+    const phoneText = document.getElementById("functionHallPhoneText");
+
+    if (wa && waNumber) {
+      wa.href = "https://wa.me/" + waNumber + "?text=" +
+        encodeURIComponent(
+          "Namaste. I would like to enquire about function hall availability and booking at Sri Venkateshwara Swamy Temple, Ganibande."
+        );
+      wa.target = "_blank";
+    }
+
+    if (call && phone) call.href = "tel:" + phone;
+    if (phoneText && phone) phoneText.textContent = "Function hall enquiry contact: " + phone;
+
+    const email = document.getElementById("templeEmail");
+    if (email && info.email) email.textContent = info.email;
+  } catch (error) {
+    console.error("Temple information load error:", error);
+  }
+}
+
+loadTempleInfo();
+</script>
 </body>
 </html>
-
-
-
+      
