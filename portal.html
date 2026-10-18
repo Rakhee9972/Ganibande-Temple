@@ -29,7 +29,10 @@ button{border:0;background:var(--gold);color:#241b12;font-weight:bold;margin-top
 <section id="portalPanel" class="hidden">
 <div class="panel"><div id="welcome" class="status">Signed in.</div><button id="logoutBtn" class="secondary">Sign Out</button></div>
 <section id="ownerPanel" class="panel hidden"><h2>Owner: YouTube Live Link</h2><label for="youtubeUrl">YouTube video/live URL</label><input id="youtubeUrl" type="url" placeholder="https://www.youtube.com/watch?v=..."><button id="saveYoutubeBtn">Save Live URL</button><p class="hint">Only an account with the Firestore role <b>owner</b> can change this link.</p></section>
-<section id="ownerEventsPanel" class="panel hidden">
+<button id="openWebsiteTextEditorBtn" type="button">
+  Website Text Editor
+</button>
+  <section id="ownerEventsPanel" class="panel hidden">
 <h2>Temple Events Calendar</h2><p class="hint">Add upcoming poojas and special temple events. Only the owner can manage events.</p>
 <label for="eventDate">Event Date</label><input id="eventDate" type="date">
 <label for="eventName">Pooja / Event Name</label><input id="eventName" type="text" maxlength="120" placeholder="e.g. Special Abhishekam">
@@ -40,6 +43,32 @@ button{border:0;background:var(--gold);color:#241b12;font-weight:bold;margin-top
 </section>
 <section class="panel"><h2>Photo & Video Upload</h2><p class="hint">Upload requires Firebase Storage to be enabled and available on your project's billing plan. If Firebase asks for a billing upgrade, stop here—do not upgrade unless you choose to.</p><input id="mediaFile" type="file" accept="image/*,video/*"><button id="uploadBtn">Upload Media</button><p id="uploadMsg" class="status" role="status">Sign in to continue.</p></section>
 <section class="panel"><h2>Temple Media Gallery</h2><div id="gallery" class="gallery"><p class="hint">Sign in to load gallery.</p></div></section>
+</section>
+<section id="websiteTextEditor" class="panel hidden">
+  <h2>Website Text Editor</h2>
+  <p class="hint">Edit temple history and about information.</p>
+
+  <label for="textSection">Select Section</label>
+  <select id="textSection">
+    <option value="about">About Temple</option>
+    <option value="history">Temple History</option>
+  </select>
+
+  <label for="textTitle">Heading</label>
+  <input id="textTitle" type="text" placeholder="Enter heading">
+
+  <label for="textEnglish">English Content</label>
+  <textarea id="textEnglish" rows="5" placeholder="Enter English content"></textarea>
+
+  <label for="textKannada">Kannada Content</label>
+  <textarea id="textKannada" rows="5" placeholder="Enter Kannada content"></textarea>
+
+  <label for="textTelugu">Telugu Content</label>
+  <textarea id="textTelugu" rows="5" placeholder="Enter Telugu content"></textarea>
+
+  <button id="loadWebsiteTextBtn" type="button">Load Saved Content</button>
+  <button id="saveWebsiteTextBtn" type="button">Save Website Text</button>
+  <p id="websiteTextMsg" class="hint"></p>
 </section>
 </main>
 <footer>Private management portal · Access is controlled by Firebase Authentication and Firestore rules.</footer>
@@ -172,6 +201,69 @@ async function loadGallery(){
     });
   }catch(e){g.textContent='Gallery could not load: '+e.message;}
 }
+  
+/* Website Text Editor */
+$('loadWebsiteTextBtn')?.addEventListener('click', async () => {
+  if (role !== 'owner') {
+    alert('Owner access required.');
+    return;
+  }
+
+  const section = $('textSection').value;
+  $('websiteTextMsg').textContent = 'Loading...';
+
+  try {
+    const snap = await getDoc(doc(db, 'websiteContent', section));
+
+    if (snap.exists()) {
+      const data = snap.data();
+      $('textTitle').value = data.title || '';
+      $('textEnglish').value = data.english || '';
+      $('textKannada').value = data.kannada || '';
+      $('textTelugu').value = data.telugu || '';
+      $('websiteTextMsg').textContent = 'Content loaded.';
+    } else {
+      $('textTitle').value = '';
+      $('textEnglish').value = '';
+      $('textKannada').value = '';
+      $('textTelugu').value = '';
+      $('websiteTextMsg').textContent = 'No saved content yet. Enter new content.';
+    }
+  } catch (e) {
+    $('websiteTextMsg').textContent = 'Load failed: ' + e.message;
+  }
+});
+
+$('saveWebsiteTextBtn')?.addEventListener('click', async () => {
+  if (role !== 'owner') {
+    alert('Owner access required.');
+    return;
+  }
+
+  const section = $('textSection').value;
+
+  try {
+    await setDoc(doc(db, 'websiteContent', section), {
+      title: $('textTitle').value.trim(),
+      english: $('textEnglish').value.trim(),
+      kannada: $('textKannada').value.trim(),
+      telugu: $('textTelugu').value.trim(),
+      updatedAt: new Date().toISOString()
+    });
+
+    $('websiteTextMsg').textContent = 'Saved successfully.';
+  } catch (e) {
+    $('websiteTextMsg').textContent = 'Save failed: ' + e.message;
+  }
+});
+  $('openWebsiteTextEditorBtn')?.addEventListener('click', () => {
+  if (role !== 'owner') {
+    alert('Owner access required.');
+    return;
+  }
+
+  $('websiteTextEditor').classList.toggle('hidden');
+});
 </script>
 </body>
 </html>
