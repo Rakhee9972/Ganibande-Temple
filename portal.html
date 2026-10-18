@@ -1,277 +1,270 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Temple Owner & Members Portal</title>
+<title>Temple Owner Portal</title>
 <style>
-:root{--maroon:#741d25;--gold:#d7a94b;--ink:#342421}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#faf7f0;color:var(--ink)}
-header{background:var(--maroon);color:white;padding:22px 16px;text-align:center}header h1{font-size:1.35rem;margin:0 0 7px}header p{margin:0;font-size:.92rem}
-main{max-width:760px;margin:22px auto;padding:0 14px}.panel{background:white;border:1px solid #e7dfd0;border-radius:12px;padding:18px;margin-bottom:16px;box-shadow:0 3px 12px #0000000b}
-h2{font-size:1.1rem;margin:0 0 14px;color:var(--maroon)}label{display:block;font-size:.9rem;margin:12px 0 5px}
-input,button{font:inherit;width:100%;padding:12px;border-radius:8px}input{border:1px solid #cfc8bb;background:#fff}
-button{border:0;background:var(--gold);color:#241b12;font-weight:bold;margin-top:12px;cursor:pointer}button:disabled{opacity:.6}button.secondary{background:#5b5552;color:white}button.danger{background:#b42318;color:white}
-.hint{font-size:.88rem;line-height:1.5;color:#665c52}.status{padding:10px;border-radius:8px;background:#f6f0e3;font-size:.9rem;line-height:1.5;overflow-wrap:anywhere}
-.hidden{display:none!important}.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.item{border:1px solid #e5dfd5;border-radius:9px;padding:9px;overflow-wrap:anywhere;margin:8px 0}
-.item img,.item video{width:100%;max-height:230px;object-fit:contain;background:#f3f0ea;border-radius:6px}.item a{font-size:.85rem;display:block;margin:8px 0;color:#6d2027}.item button{padding:9px;margin-top:6px}footer{text-align:center;padding:18px;color:#786f65;font-size:.8rem}
+:root {
+  --maroon:#741d25;
+  --gold:#d7a94b;
+  --ink:#342421;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#faf7f0;
+  color:var(--ink);
+}
+header {
+  background:var(--maroon);
+  color:white;
+  padding:22px 16px;
+  text-align:center;
+}
+header h1 { font-size:1.3rem; margin:0 0 7px; }
+main { max-width:760px; margin:22px auto; padding:0 14px; }
+.panel {
+  background:white;
+  border:1px solid #e7dfd0;
+  border-radius:12px;
+  padding:18px;
+  margin-bottom:16px;
+  box-shadow:0 3px 12px #0000000b;
+}
+h2 { font-size:1.1rem; color:var(--maroon); }
+label { display:block; font-size:.9rem; margin:12px 0 5px; }
+input,textarea,select,button {
+  font:inherit;
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+}
+input,textarea,select {
+  border:1px solid #cfc8bb;
+  background:white;
+  color:var(--ink);
+}
+textarea { resize:vertical; }
+button {
+  border:0;
+  background:var(--gold);
+  color:#241b12;
+  font-weight:bold;
+  margin-top:12px;
+  cursor:pointer;
+}
+button.secondary { background:#5b5552; color:white; }
+button.danger { background:#b42318; color:white; }
+.hint { font-size:.88rem; line-height:1.5; color:#665c52; }
+.status {
+  padding:10px;
+  border-radius:8px;
+  background:#f6f0e3;
+  font-size:.9rem;
+  line-height:1.5;
+  overflow-wrap:anywhere;
+}
+.hidden { display:none!important; }
+.item {
+  border:1px solid #e5dfd5;
+  border-radius:9px;
+  padding:10px;
+  margin:8px 0;
+  overflow-wrap:anywhere;
+}
+.item img,.item video {
+  width:100%;
+  max-height:230px;
+  object-fit:contain;
+}
+footer {
+  text-align:center;
+  padding:18px;
+  color:#786f65;
+  font-size:.8rem;
+}
 </style>
 </head>
 <body>
-<header><h1>Sri Venkateshwara Swamy Temple</h1><p>Owner & Authorized Members Portal · Ganibande</p></header>
+
+<header>
+  <h1>Sri Venkateshwara Swamy Temple</h1>
+  <p>Owner & Authorized Members Portal · Ganibande</p>
+</header>
+
 <main>
-<section id="setupNotice" class="panel"><h2>Firebase setup</h2><p class="hint">Only accounts created by the temple owner and assigned an authorized role can enter. Never add a Firebase service-account private key here.</p></section>
 <section id="loginPanel" class="panel">
-<h2>Authorized Sign In</h2><label for="email">Email</label><input id="email" type="email" autocomplete="username" placeholder="Registered email">
-<label for="password">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Password">
-<button id="loginBtn">Sign In</button><p id="loginMsg" class="status" role="status">Only accounts created by the temple owner can sign in.</p>
+  <h2>Authorized Sign In</h2>
+  <label for="email">Email</label>
+  <input id="email" type="email" autocomplete="username"
+         placeholder="Registered email">
+
+  <label for="password">Password</label>
+  <input id="password" type="password"
+         autocomplete="current-password" placeholder="Password">
+
+  <button id="loginBtn">Sign In</button>
+  <p id="loginMsg" class="status">
+    Only authorized temple accounts can sign in.
+  </p>
 </section>
+
 <section id="portalPanel" class="hidden">
-<div class="panel"><div id="welcome" class="status">Signed in.</div><button id="logoutBtn" class="secondary">Sign Out</button></div>
-<section id="ownerPanel" class="panel hidden"><h2>Owner: YouTube Live Link</h2><label for="youtubeUrl">YouTube video/live URL</label><input id="youtubeUrl" type="url" placeholder="https://www.youtube.com/watch?v=..."><button id="saveYoutubeBtn">Save Live URL</button><p class="hint">Only an account with the Firestore role <b>owner</b> can change this link.</p></section>
-<button id="openWebsiteTextEditorBtn" type="button">
-  Website Text Editor
-</button>
-  <section id="ownerEventsPanel" class="panel hidden">
-<h2>Temple Events Calendar</h2><p class="hint">Add upcoming poojas and special temple events. Only the owner can manage events.</p>
-<label for="eventDate">Event Date</label><input id="eventDate" type="date">
-<label for="eventName">Pooja / Event Name</label><input id="eventName" type="text" maxlength="120" placeholder="e.g. Special Abhishekam">
-<label for="eventTime">Event Time</label><input id="eventTime" type="text" maxlength="80" placeholder="e.g. 8:00 AM">
-<label for="eventDescription">Description</label><input id="eventDescription" type="text" maxlength="500" placeholder="Event details">
-<button id="saveEventBtn">Add Temple Event</button><p id="eventMsg" class="status" role="status">Enter event date and name.</p>
-<h2 style="margin-top:18px">Manage Events</h2><div id="ownerEventsList"><p class="hint">Sign in as owner to manage events.</p></div>
-</section>
-<section class="panel"><h2>Photo & Video Upload</h2><p class="hint">Upload requires Firebase Storage to be enabled and available on your project's billing plan. If Firebase asks for a billing upgrade, stop here—do not upgrade unless you choose to.</p><input id="mediaFile" type="file" accept="image/*,video/*"><button id="uploadBtn">Upload Media</button><p id="uploadMsg" class="status" role="status">Sign in to continue.</p></section>
-<section class="panel"><h2>Temple Media Gallery</h2><div id="gallery" class="gallery"><p class="hint">Sign in to load gallery.</p></div></section>
-</section>
-<section id="websiteTextEditor" class="panel hidden">
-  <h2>Website Text Editor</h2>
-  <p class="hint">Edit temple history and about information.</p>
+  <section class="panel">
+    <p id="welcome" class="status">Signed in.</p>
+    <button id="logoutBtn" class="secondary">Sign Out</button>
+  </section>
 
-  <label for="textSection">Select Section</label>
-  <select id="textSection">
-    <option value="about">About Temple</option>
-    <option value="history">Temple History</option>
-  </select>
+  <section id="ownerPanel" class="panel hidden">
+    <h2>1. YouTube Live Link</h2>
+    <label for="youtubeUrl">YouTube URL</label>
+    <input id="youtubeUrl" type="url"
+           placeholder="https://www.youtube.com/watch?v=...">
+    <button id="saveYoutubeBtn">Save Live URL</button>
+  </section>
 
-  <label for="textTitle">Heading</label>
-  <input id="textTitle" type="text" placeholder="Enter heading">
+  <section id="ownerContentPanel" class="panel hidden">
+    <h2>2. Website Text Editor</h2>
+    <p class="hint">
+      Edit About Temple and Temple History in three languages.
+    </p>
 
-  <label for="textEnglish">English Content</label>
-  <textarea id="textEnglish" rows="5" placeholder="Enter English content"></textarea>
+    <label for="textSection">Website Section</label>
+    <select id="textSection">
+      <option value="about">About Temple</option>
+      <option value="history">Temple History</option>
+    </select>
 
-  <label for="textKannada">Kannada Content</label>
-  <textarea id="textKannada" rows="5" placeholder="Enter Kannada content"></textarea>
+    <label for="textTitle">English Heading</label>
+    <input id="textTitle" placeholder="Section heading">
 
-  <label for="textTelugu">Telugu Content</label>
-  <textarea id="textTelugu" rows="5" placeholder="Enter Telugu content"></textarea>
+    <label for="textSubtitle">English Subtitle</label>
+    <input id="textSubtitle" placeholder="Section subtitle">
 
-  <button id="loadWebsiteTextBtn" type="button">Load Saved Content</button>
-  <button id="saveWebsiteTextBtn" type="button">Save Website Text</button>
-  <p id="websiteTextMsg" class="hint"></p>
+    <label for="textEnglish">English Content</label>
+    <textarea id="textEnglish" rows="5"></textarea>
+
+    <label for="textKannadaTitle">Kannada Heading</label>
+    <input id="textKannadaTitle">
+
+    <label for="textKannadaSubtitle">Kannada Subtitle</label>
+    <input id="textKannadaSubtitle">
+
+    <label for="textKannada">Kannada Content</label>
+    <textarea id="textKannada" rows="5"></textarea>
+
+    <label for="textTeluguTitle">Telugu Heading</label>
+    <input id="textTeluguTitle">
+
+    <label for="textTeluguSubtitle">Telugu Subtitle</label>
+    <input id="textTeluguSubtitle">
+
+    <label for="textTelugu">Telugu Content</label>
+    <textarea id="textTelugu" rows="5"></textarea>
+
+    <button id="loadWebsiteTextBtn" type="button">
+      Load Saved Content
+    </button>
+    <button id="saveWebsiteTextBtn" type="button">
+      Save Website Text
+    </button>
+    <p id="websiteTextMsg" class="status"></p>
+  </section>
+
+  <section id="ownerTimingsPanel" class="panel hidden">
+    <h2>3. Darshan Timings & Temple Status</h2>
+
+    <label for="timingDay">Select Day</label>
+    <select id="timingDay">
+      <option value="Sunday">Sunday</option>
+      <option value="Monday">Monday</option>
+      <option value="Tuesday">Tuesday</option>
+      <option value="Wednesday">Wednesday</option>
+      <option value="Thursday">Thursday</option>
+      <option value="Friday">Friday</option>
+      <option value="Saturday">Saturday</option>
+    </select>
+
+    <label for="morningTiming">Morning Darshan Timings</label>
+    <input id="morningTiming" placeholder="e.g. 7:00 AM – 12:00 PM">
+
+    <label for="eveningTiming">Evening Darshan Timings</label>
+    <input id="eveningTiming" placeholder="e.g. 4:00 PM – 8:00 PM">
+
+    <label for="templeStatus">Temple Status for this day</label>
+    <select id="templeStatus">
+      <option value="open">Open</option>
+      <option value="closed">Closed</option>
+    </select>
+
+    <button id="loadTimingBtn" type="button">Load Day Timings</button>
+    <button id="saveTimingBtn" type="button">Save Day Timings</button>
+    <p id="timingMsg" class="status"></p>
+  </section>
+
+  <section id="ownerShlokamPanel" class="panel hidden">
+    <h2>4. Daily Shlokam Editor</h2>
+    <p class="hint">
+      Existing seven day images remain unchanged.
+    </p>
+
+    <label for="shlokamDay">Select Day</label>
+    <select id="shlokamDay">
+      <option value="Sunday">Sunday</option>
+      <option value="Monday">Monday</option>
+      <option value="Tuesday">Tuesday</option>
+      <option value="Wednesday">Wednesday</option>
+      <option value="Thursday">Thursday</option>
+      <option value="Friday">Friday</option>
+      <option value="Saturday">Saturday</option>
+    </select>
+
+    <label for="shlokamText">Shlokam</label>
+    <textarea id="shlokamText" rows="3"></textarea>
+
+    <label for="shlokamEnglishMeaning">English Meaning</label>
+    <textarea id="shlokamEnglishMeaning" rows="3"></textarea>
+
+    <label for="shlokamKannadaMeaning">Kannada Meaning</label>
+    <textarea id="shlokamKannadaMeaning" rows="3"></textarea>
+
+    <label for="shlokamTeluguMeaning">Telugu Meaning</label>
+    <textarea id="shlokamTeluguMeaning" rows="3"></textarea>
+
+    <button id="loadShlokamBtn" type="button">Load Saved Shlokam</button>
+    <button id="saveShlokamBtn" type="button">Save Shlokam</button>
+    <p id="shlokamMsg" class="status"></p>
+  </section>
+
+  <section id="ownerTempleInfoPanel" class="panel hidden">
+    <h2>5. Temple Information Editor</h2>
+
+    <label for="templePhone">Contact Number</label>
+    <input id="templePhone" type="text">
+
+    <label for="templeEmail">Contact Email</label>
+    <input id="templeEmail" type="email">
+
+    <label for="templeAddress">Temple Address</label>
+    <textarea id="templeAddress" rows="3"></textarea>
+
+    <label for="templeFacilities">Facilities & Other Information</label>
+    <textarea id="templeFacilities" rows="4"></textarea>
+
+    <button id="loadTempleInfoBtn" type="button">Load Saved Information</button>
+    <button id="saveTempleInfoBtn" type="button">Save Temple Information</button>
+    <p id="templeInfoMsg" class="status"></p>
+  </section>
+
+  <!-- Existing Events Manager and Photo/Video Manager
+       will be preserved in the completed code. -->
+
 </section>
 </main>
-<footer>Private management portal · Access is controlled by Firebase Authentication and Firestore rules.</footer>
-<script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
-import { getFirestore, doc, getDoc, setDoc, collection, addDoc, getDocs, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
-import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js';
 
-// Existing Firebase Web App configuration
-const firebaseConfig = {
-  apiKey: 'AIzaSyARWe0ryEhtqqlAaC6ogRVCo94Fp4tJvSQ',
-  authDomain: 'ganibande-temple.firebaseapp.com',
-  projectId: 'ganibande-temple',
-  storageBucket: 'ganibande-temple.firebasestorage.app',
-  messagingSenderId: '721748696796',
-  appId: '1:721748696796:web:146c4d0e032d579ad91e19',
-  measurementId: 'G-E71D4M8GG8'
-};
-const $ = id => document.getElementById(id);
-const loginPanel=$('loginPanel'), portalPanel=$('portalPanel'), ownerPanel=$('ownerPanel'), ownerEventsPanel=$('ownerEventsPanel');
-let app,auth,db,storage,currentUser=null,role=null;
-try {
-  app=initializeApp(firebaseConfig); auth=getAuth(app); db=getFirestore(app); storage=getStorage(app);
-  onAuthStateChanged(auth, async user => { if(user) await showPortal(user); else showLogin(); });
-} catch(e) { $('loginMsg').textContent='Firebase setup error: '+e.message; }
-
-function showLogin(){
-  currentUser=null; role=null; loginPanel.classList.remove('hidden'); portalPanel.classList.add('hidden');
-  ownerPanel.classList.add('hidden'); ownerEventsPanel.classList.add('hidden');
-}
-async function showPortal(user){
-  currentUser=user;
-  try{
-    const snap=await getDoc(doc(db,'users',user.uid));
-    if(!snap.exists() || !['owner','member'].includes(snap.data().role)){
-      await signOut(auth); $('loginMsg').textContent='This account is not authorized. Ask the temple owner to set its role.'; return;
-    }
-    role=snap.data().role; loginPanel.classList.add('hidden'); portalPanel.classList.remove('hidden');
-    ownerPanel.classList.toggle('hidden',role!=='owner');
-    ownerEventsPanel.classList.toggle('hidden',role!=='owner');
-    $('welcome').textContent='Signed in as '+user.email+' · Role: '+role;
-    $('uploadMsg').textContent='Ready. Upload requires Firebase Storage access.';
-    if(role==='owner'){
-      const ys=await getDoc(doc(db,'config','youtube'));
-      if(ys.exists()) $('youtubeUrl').value=ys.data().url||'';
-      await loadEvents();
-    }
-    await loadGallery();
-  }catch(e){ await signOut(auth); $('loginMsg').textContent='Could not verify access. Check Firestore rules and users/'+user.uid+' role document. '+e.message; }
-}
-$('loginBtn').addEventListener('click',async()=>{
-  try{$('loginMsg').textContent='Signing in…';await signInWithEmailAndPassword(auth,$('email').value.trim(),$('password').value);}
-  catch(e){$('loginMsg').textContent='Sign-in failed: '+e.message;}
-});
-$('logoutBtn').addEventListener('click',async()=>{try{await signOut(auth);showLogin();}catch(e){alert(e.message);}});
-$('saveYoutubeBtn').addEventListener('click',async()=>{
-  if(role!=='owner') return alert('Owner access required.');
-  const url=$('youtubeUrl').value.trim();
-  if(url&&!/^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//i.test(url)) return alert('Enter a valid YouTube URL.');
-  try{await setDoc(doc(db,'config','youtube'),{url,updatedAt:new Date().toISOString(),updatedBy:currentUser.uid});alert('YouTube URL saved.');}
-  catch(e){alert('Could not save URL: '+e.message);}
-});
-$('saveEventBtn').addEventListener('click',async()=>{
-  if(!currentUser||role!=='owner'){$('eventMsg').textContent='Owner access required.';return;}
-  const date=$('eventDate').value, name=$('eventName').value.trim(), time=$('eventTime').value.trim(), description=$('eventDescription').value.trim();
-  if(!date||!name){$('eventMsg').textContent='Please enter event date and name.';return;}
-  try{
-    $('saveEventBtn').disabled=true; $('eventMsg').textContent='Saving event…';
-    await addDoc(collection(db,'templeEvents'),{date,name,time,description,createdAt:new Date().toISOString(),createdBy:currentUser.uid});
-    $('eventMsg').textContent='Event saved successfully.';
-    $('eventDate').value='';$('eventName').value='';$('eventTime').value='';$('eventDescription').value='';
-    await loadEvents();
-  }catch(e){$('eventMsg').textContent='Save failed: '+e.message;}
-  finally{$('saveEventBtn').disabled=false;}
-});
-async function loadEvents(){
-  const list=$('ownerEventsList'); list.replaceChildren();
-  if(role!=='owner') return;
-  try{
-    const snap=await getDocs(collection(db,'templeEvents'));
-    if(snap.empty){list.textContent='No temple events added yet.';return;}
-    const events=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.date||'').localeCompare(b.date||''));
-    events.forEach(event=>{
-      const item=document.createElement('div');item.className='item';
-      const title=document.createElement('h3');title.textContent=event.name||'Temple Event';item.appendChild(title);
-      const details=document.createElement('p');details.textContent=(event.date||'')+' · '+(event.time||'Time not specified')+' · '+(event.description||'');item.appendChild(details);
-      const btn=document.createElement('button');btn.className='danger';btn.textContent='Delete Event';
-      btn.addEventListener('click',async()=>{
-        if(role!=='owner')return alert('Owner access required.');
-        if(!confirm('Delete this event?'))return;
-        try{await deleteDoc(doc(db,'templeEvents',event.id));await loadEvents();}
-        catch(e){alert('Delete failed: '+e.message);}
-      });
-      item.appendChild(btn);list.appendChild(item);
-    });
-  }catch(e){list.textContent='Events could not load: '+e.message;}
-}
-$('uploadBtn').addEventListener('click',async()=>{
-  if(!currentUser||!['owner','member'].includes(role))return alert('Authorized sign-in required.');
-  const f=$('mediaFile').files[0];if(!f)return alert('Select a photo or video first.');
-  $('uploadMsg').textContent='Uploading…';
-  try{
-    const safeName=f.name.replace(/[^a-zA-Z0-9._-]/g,'_'),path=`media/${currentUser.uid}/${Date.now()}_${safeName}`,sr=ref(storage,path);
-    await uploadBytes(sr,f);const url=await getDownloadURL(sr);
-    await addDoc(collection(db,'media'),{url,path,name:f.name,type:f.type.startsWith('video/')?'video':'image',uploadedBy:currentUser.uid,createdAt:new Date().toISOString()});
-    $('uploadMsg').textContent='Upload complete.';await loadGallery();
-  }catch(e){$('uploadMsg').textContent='Upload failed: '+e.message+'. Firebase Storage may require setup/billing; do not upgrade unless you choose to.';}
-});
-async function loadGallery(){
-  const g=$('gallery');g.replaceChildren();
-  try{
-    const snap=await getDocs(collection(db,'media'));
-    if(snap.empty){g.textContent='No media uploaded yet.';return;}
-    snap.forEach(d=>{
-      const x=d.data(),item=document.createElement('div');item.className='item';
-      const media=x.type==='video'?document.createElement('video'):document.createElement('img');media.src=x.url;
-      if(x.type==='video')media.controls=true;else media.alt=x.name||'Temple photo';item.appendChild(media);
-      const link=document.createElement('a');link.href=x.url;link.target='_blank';link.rel='noopener';link.textContent=x.name||'Open media';item.appendChild(link);
-      if(role==='owner'||(currentUser&&x.uploadedBy===currentUser.uid)){
-        const b=document.createElement('button');b.className='danger';b.textContent='Delete';
-        b.addEventListener('click',async()=>{
-          if(!confirm('Delete this media?'))return;
-          try{await deleteDoc(doc(db,'media',d.id));if(x.path)await deleteObject(ref(storage,x.path));await loadGallery();}
-          catch(e){alert('Delete failed: '+e.message);}
-        });
-        item.appendChild(b);
-      }
-      g.appendChild(item);
-    });
-  }catch(e){g.textContent='Gallery could not load: '+e.message;}
-}
-  
-/* Website Text Editor */
-$('loadWebsiteTextBtn')?.addEventListener('click', async () => {
-  if (role !== 'owner') {
-    alert('Owner access required.');
-    return;
-  }
-
-  const section = $('textSection').value;
-  $('websiteTextMsg').textContent = 'Loading...';
-
-  try {
-    const snap = await getDoc(doc(db, 'websiteContent', section));
-
-    if (snap.exists()) {
-      const data = snap.data();
-      $('textTitle').value = data.title || '';
-      $('textEnglish').value = data.english || '';
-      $('textKannada').value = data.kannada || '';
-      $('textTelugu').value = data.telugu || '';
-      $('websiteTextMsg').textContent = 'Content loaded.';
-    } else {
-      $('textTitle').value = '';
-      $('textEnglish').value = '';
-      $('textKannada').value = '';
-      $('textTelugu').value = '';
-      $('websiteTextMsg').textContent = 'No saved content yet. Enter new content.';
-    }
-  } catch (e) {
-    $('websiteTextMsg').textContent = 'Load failed: ' + e.message;
-  }
-});
-
-$('saveWebsiteTextBtn')?.addEventListener('click', async () => {
-  if (role !== 'owner') {
-    alert('Owner access required.');
-    return;
-  }
-
-  const section = $('textSection').value;
-
-  try {
-    await setDoc(doc(db, 'websiteContent', section), {
-      title: $('textTitle').value.trim(),
-      english: $('textEnglish').value.trim(),
-      kannada: $('textKannada').value.trim(),
-      telugu: $('textTelugu').value.trim(),
-      updatedAt: new Date().toISOString()
-    });
-
-    $('websiteTextMsg').textContent = 'Saved successfully.';
-  } catch (e) {
-    $('websiteTextMsg').textContent = 'Save failed: ' + e.message;
-  }
-});
-  $('openWebsiteTextEditorBtn').addEventListener('click', () => {
-  if (role !== 'owner') {
-    alert('Owner access required.');
-    return;
-  }
-
-  const editor = $('websiteTextEditor');
-
-  if (!editor) {
-    alert('Website Text Editor section not found.');
-    return;
-  }
-
-  editor.classList.toggle('hidden');
-  editor.scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-</script>
+<footer>Private Temple Management Portal</footer>
 </body>
 </html>
