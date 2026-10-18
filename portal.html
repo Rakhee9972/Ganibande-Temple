@@ -256,13 +256,21 @@ $('saveWebsiteTextBtn')?.addEventListener('click', async () => {
     $('websiteTextMsg').textContent = 'Save failed: ' + e.message;
   }
 });
-  $('openWebsiteTextEditorBtn')?.addEventListener('click', () => {
+  $('openWebsiteTextEditorBtn').addEventListener('click', () => {
   if (role !== 'owner') {
     alert('Owner access required.');
     return;
   }
 
-  $('websiteTextEditor').classList.toggle('hidden');
+  const editor = $('websiteTextEditor');
+
+  if (!editor) {
+    alert('Website Text Editor section not found.');
+    return;
+  }
+
+  editor.classList.toggle('hidden');
+  editor.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 </script>
 </body>
