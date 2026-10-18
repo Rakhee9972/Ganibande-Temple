@@ -496,34 +496,38 @@ header {
   </div>
 </section>
 
+
 <section id="history">
   <div class="container">
-    <h2 class="section-title">Temple History</h2>
+    <h2 class="section-title" id="historyTitle">Temple History</h2>
 
-    <p class="section-subtitle">
+    <p class="section-subtitle" id="historySubtitle">
       The spiritual significance and traditions of Ganibande.
     </p>
 
     <div class="card history-content">
-      <h3>Tradition, Faith and Devotion</h3>
+      <h3 id="historyHeading">Tradition, Faith and Devotion</h3>
 
-      <p>
-        Sri Venkateshwara Swamy Temple is a place where devotees
-        gather to offer prayers and seek the blessings of the Lord.
-        Temple worship and religious celebrations bring the local
-        community together in devotion.
-      </p>
+      <div id="historyContent">
+        <p>
+          Sri Venkateshwara Swamy Temple is a place where devotees
+          gather to offer prayers and seek the blessings of the Lord.
+          Temple worship and religious celebrations bring the local
+          community together in devotion.
+        </p>
 
-      <p>
-        The temple's detailed historical background, establishment
-        date and traditional stories can be added here after they
-        are confirmed by temple elders or the temple management.
-      </p>
+        <p>
+          The temple's detailed historical background, establishment
+          date and traditional stories can be added here after they
+          are confirmed by temple elders or the temple management.
+        </p>
 
-      <p><strong>Govinda! Govinda!</strong></p>
+        <p><strong>Govinda! Govinda!</strong></p>
+      </div>
     </div>
   </div>
 </section>
+
 
 <section id="temple-events">
   <div class="container">
@@ -1088,6 +1092,45 @@ if (!pastEvents.length) {
 
 displayTempleEvents();
   
+async function loadTempleHistoryContent() {
+  try {
+    const historyRef = await getDocs(
+      collection(db, "websiteContent")
+    );
+
+    const historyDoc = historyRef.docs.find(
+      doc => doc.id === "history"
+    );
+
+    if (!historyDoc) {
+      console.log("No saved Temple History content found.");
+      return;
+    }
+
+    const data = historyDoc.data();
+
+    if (data.title) {
+      document.getElementById("historyTitle").textContent =
+        data.title;
+    }
+
+    if (data.english) {
+      const content = document.getElementById("historyContent");
+      content.textContent = data.english;
+      content.style.whiteSpace = "pre-line";
+    }
+
+    if (data.title) {
+      document.getElementById("historyHeading").textContent =
+        data.title;
+    }
+  } catch (error) {
+    console.error("Temple History load error:", error);
+  }
+}
+
+loadTempleHistoryContent();
+                  
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
