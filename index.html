@@ -537,6 +537,27 @@ header {
 </section>
 
 
+<section id="daily-shlokam">
+  <div class="container">
+    <h2 class="section-title">🙏 Daily Venkateshwara Swamy Shlokam</h2>
+    <p class="section-subtitle">
+      A sacred shlokam for every day of the week.
+    </p>
+
+    <div class="card" style="text-align:center;">
+      <img id="dailyGodImage"
+           src="sunday.png"
+           alt="Daily deity"
+           style="width:100%;max-width:320px;border-radius:12px;margin-bottom:16px;">
+
+      <h3 id="dailyGodDay">Sunday</h3>
+      <h3>శ్రీ వేంకటేశ్వర స్వామి</h3>
+      <p id="dailyShlokam">ॐ नमो वेंकटेशाय नमः ॥</p>
+      <p id="dailyShlokamMeaning">Om Namo Venkateshaya Namaha.</p>
+    </div>
+  </div>
+</section>
+  
 <section id="temple-events">
   <div class="container">
     <h2 class="section-title">Temple Events & Special Poojas</h2>
@@ -1164,6 +1185,58 @@ menuToggle.setAttribute("aria-label", "Open navigation menu");
 });
 });
   }
+  
+const dailyDayNames = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+
+const dailyImages = [
+  "sunday.png",
+  "monday.png",
+  "tuesday.png",
+  "wednesday.png",
+  "thursday.png",
+  "friday.png",
+  "saturday.png"
+];
+
+const dailyShlokams = [
+  "ॐ नमो वेंकटेशाय नमः ॥",
+  "ॐ श्रीनिवासाय नमः ॥",
+  "ॐ वेंकटेश्वराय नमः ॥",
+  "ॐ गोविन्दाय नमः ॥",
+  "ॐ नारायणाय नमः ॥",
+  "ॐ पद्मावतीपतये नमः ॥",
+  "ॐ बालाजी नमः ॥"
+];
+
+const dailyMeanings = [
+  "Om Namo Venkateshaya Namaha.",
+  "Om Srinivasaya Namaha.",
+  "Om Venkateshwaraya Namaha.",
+  "Om Govindaya Namaha.",
+  "Om Narayanaya Namaha.",
+  "Om Padmavathipataye Namaha.",
+  "Om Balaji Namaha."
+];
+
+const today = new Date().getDay();
+
+const dayElement = document.getElementById("dailyGodDay");
+const imageElement = document.getElementById("dailyGodImage");
+const shlokamElement = document.getElementById("dailyShlokam");
+const meaningElement = document.getElementById("dailyShlokamMeaning");
+
+if (dayElement) dayElement.textContent = dailyDayNames[today];
+if (imageElement) imageElement.src = dailyImages[today];
+if (shlokamElement) shlokamElement.textContent = dailyShlokams[today];
+if (meaningElement) meaningElement.textContent = dailyMeanings[today];
   
   </script>
   
