@@ -1152,18 +1152,46 @@ let savedHistory = null;
 let savedAbout = null;
 let selectedHistoryLanguage = "en";
 
+
 function renderHistoryLanguage(language) {
   selectedHistoryLanguage = language || "en";
+
   const data = savedHistory || {};
-  const titleMap = { en: data.title || "Temple History", kn: data.kannadaTitle || data.titleKannada || "ದೇವಾಲಯದ ಇತಿಹಾಸ", te: data.teluguTitle || data.titleTelugu || "ఆలయ చరిత్ర" };
-  const subtitleMap = { en: data.subtitle || "The spiritual significance and traditions of Ganibande.", kn: data.kannadaSubtitle || data.subtitleKannada || "ಗಣಿಬಂಡೆಯ ಆಧ್ಯಾತ್ಮಿಕ ಮಹತ್ವ ಮತ್ತು ಸಂಪ್ರದಾಯಗಳು.", te: data.teluguSubtitle || data.subtitleTelugu || "గణిబండె ఆధ్యాత్మిక ప్రాముఖ్యత మరియు సంప్రదాయాలు." };
-  const contentMap = { en: data.english, kn: data.kannada || data.kannadaContent, te: data.telugu || data.teluguContent };
-  document.getElementById("historyHeading").textContent = titleMap[selectedHistoryLanguage];
-  document.getElementById("historySubtitle").textContent = subtitleMap[selectedHistoryLanguage];
+
+  const titleMap = {
+    en: data.title || data.englishHeading || "Temple History",
+    kn: data.kannadaTitle || data.titleKannada || data.kannadaHeading || "ದೇವಾಲಯದ ಇತಿಹಾಸ",
+    te: data.teluguTitle || data.titleTelugu || data.teluguHeading || "ఆలయ చరిత్ర"
+  };
+
+  const subtitleMap = {
+    en: data.subtitle || data.englishSubtitle || "The spiritual significance and traditions of Ganibande.",
+    kn: data.kannadaSubtitle || data.subtitleKannada || "ಗಣಿಬಂಡೆಯ ಆಧ್ಯಾತ್ಮಿಕ ಮಹತ್ವ ಮತ್ತು ಸಂಪ್ರದಾಯಗಳು.",
+    te: data.teluguSubtitle || data.subtitleTelugu || "గణిబండె ఆధ్యాత్మిక ప్రాముఖ్యత మరియు సంప్రదాయాలు."
+  };
+
+  const contentMap = {
+    en: data.english || data.content || data.englishContent,
+    kn: data.kannada || data.kannadaContent || data.contentKannada,
+    te: data.telugu || data.teluguContent || data.contentTelugu
+  };
+
+  document.getElementById("historyHeading").textContent =
+    titleMap[selectedHistoryLanguage];
+
+  document.getElementById("historySubtitle").textContent =
+    subtitleMap[selectedHistoryLanguage];
+
   const content = document.getElementById("historyContent");
-  content.textContent = contentMap[selectedHistoryLanguage] || contentMap.en || "Temple history will be updated by the temple management.";
+
+  content.textContent =
+    contentMap[selectedHistoryLanguage] ||
+    contentMap.en ||
+    "Temple history will be updated by the temple management.";
+
   content.style.whiteSpace = "pre-line";
 }
+
 
 window.changeHistoryLanguage = function () {
   const selector = document.getElementById("historyLanguage");
